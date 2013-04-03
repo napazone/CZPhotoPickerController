@@ -34,6 +34,7 @@ typedef enum {
 @property(nonatomic,strong) UIPopoverController *popoverController;
 @property(nonatomic,weak) UIBarButtonItem *showFromBarButtonItem;
 @property(nonatomic,assign) CGRect showFromRect;
+@property(nonatomic,weak) UITabBar *showFromTabBar;
 @property(nonatomic,weak) UIViewController *showFromViewController;
 @property(nonatomic,assign) UIImagePickerControllerSourceType sourceType;
 
@@ -190,6 +191,9 @@ typedef enum {
       if (self.showFromBarButtonItem) {
         [sheet showFromBarButtonItem:self.showFromBarButtonItem animated:YES];
       }
+      else if (self.showFromTabBar) {
+        [sheet showFromTabBar:self.showFromTabBar];
+      }
       else {
         [sheet showFromRect:self.showFromRect inView:self.showFromViewController.view animated:YES];
       }
@@ -200,6 +204,12 @@ typedef enum {
 - (void)showFromBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
   self.showFromBarButtonItem = barButtonItem;
+  [self show];
+}
+
+- (void)showFromTabBar:(UITabBar *)tabBar
+{
+  self.showFromTabBar = tabBar;
   [self show];
 }
 
