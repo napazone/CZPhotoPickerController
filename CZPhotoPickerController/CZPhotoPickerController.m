@@ -30,11 +30,13 @@ typedef enum {
 
 @property(nonatomic,strong) ALAssetsLibrary *assetsLibrary;
 @property(nonatomic,copy) void (^completionBlock)(UIImagePickerController *imagePickerController, NSDictionary *imageInfoDict);
-@property(nonatomic,strong) UIImage *lastPhoto;
-@property(nonatomic,strong) UIPopoverController *popoverController;
-@property(nonatomic,weak) UIBarButtonItem *showFromBarButtonItem;
-@property(nonatomic,assign) CGRect showFromRect;
-@property(nonatomic,weak) UIViewController *showFromViewController;
+@property(nonatomic,strong) UIImage               * lastPhoto;
+@property(nonatomic,strong) UIPopoverController   * popoverController;
+@property(nonatomic,weak)   UIBarButtonItem       * showFromBarButtonItem;
+@property(nonatomic,weak)   UITabBar              * showFromTabBar;
+@property(nonatomic,assign) CGRect                  showFromRect;
+@property(nonatomic,weak)   UIViewController      * showFromViewController;
+
 @property(nonatomic,assign) UIImagePickerControllerSourceType sourceType;
 
 @end
@@ -49,13 +51,13 @@ typedef enum {
   if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == NO) {
     return NO;
   }
-
+  
   NSArray *availableMediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
-
+  
   if ([availableMediaTypes containsObject:(NSString *)kUTTypeImage] == NO) {
     return NO;
   }
-
+  
   return YES;
 }
 
@@ -69,14 +71,14 @@ typedef enum {
 - (id)initWithPresentingViewController:(UIViewController *)aViewController withCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
 {
   self = [super init];
-
+  
   if (self) {
     self.allowsEditing = NO;
     self.showFromViewController = aViewController;
     self.completionBlock = completionBlock;
     [self observeApplicationDidEnterBackgroundNotification];
   }
-
+  
   return self;
 }
 
@@ -86,7 +88,7 @@ typedef enum {
 {
   [self.popoverController dismissPopoverAnimated:YES];
   self.popoverController = nil;
-
+  
   if (self.completionBlock) {
     self.completionBlock(nil, nil);
   }
@@ -97,7 +99,7 @@ typedef enum {
   if (_assetsLibrary == nil) {
     _assetsLibrary = [[ALAssetsLibrary alloc] init];
   }
-
+  
   return _assetsLibrary;
 }
 
@@ -106,13 +108,13 @@ typedef enum {
   switch (buttonIndex) {
     case PhotoPickerButtonUseLastPhoto:
       return NSLocalizedString(@"Use Last Photo Taken", nil);
-
+      
     case PhotoPickerButtonTakePhoto:
       return NSLocalizedString(@"Take Photo", nil);
-
+      
     case PhotoPickerButtonChooseFromLibrary:
       return NSLocalizedString(@"Choose from Library", nil);
-
+      
     default:
       return nil;
   }
@@ -121,34 +123,34 @@ typedef enum {
 - (void)getLastPhotoTakenWithCompletionBlock:(void (^)(UIImage *))completionBlock
 {
   [self.assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-
+    
     if (*stop == YES) {
       return;
     }
-
+    
     group.assetsFilter = [ALAssetsFilter allPhotos];
-
+    
     if ([group numberOfAssets] == 0) {
       completionBlock(nil);
     }
     else {
       [group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:^(ALAsset *result, NSUInteger index, BOOL *innerStop) {
-
-          // `index` will be `NSNotFound` on last call
-
-          if (index == NSNotFound || result == nil) {
-            return;
-          }
-
-          ALAssetRepresentation *representation = [result defaultRepresentation];
-          completionBlock([UIImage imageWithCGImage:[representation fullScreenImage]]);
-
-          *innerStop = YES;
-        }];
+        
+        // `index` will be `NSNotFound` on last call
+        
+        if (index == NSNotFound || result == nil) {
+          return;
+        }
+        
+        ALAssetRepresentation *representation = [result defaultRepresentation];
+        completionBlock([UIImage imageWithCGImage:[representation fullScreenImage]]);
+        
+        *innerStop = YES;
+      }];
     }
-
+    
     *stop = YES;
-
+    
   } failureBlock:^(NSError *error) {
     completionBlock(nil);
   }];
@@ -176,20 +178,23 @@ typedef enum {
   }
   else {
     [self getLastPhotoTakenWithCompletionBlock:^(UIImage *lastPhoto) {
-
+      
       self.lastPhoto = lastPhoto;
-
+      
       UIActionSheet *sheet;
-
+      
       if (lastPhoto) {
         sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:[self buttonTitleForButtonIndex:PhotoPickerButtonUseLastPhoto], [self buttonTitleForButtonIndex:PhotoPickerButtonTakePhoto], [self buttonTitleForButtonIndex:PhotoPickerButtonChooseFromLibrary], nil];
       }
       else {
         sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:[self buttonTitleForButtonIndex:PhotoPickerButtonTakePhoto], [self buttonTitleForButtonIndex:PhotoPickerButtonChooseFromLibrary], nil];
       }
-
+      
       if (self.showFromBarButtonItem) {
         [sheet showFromBarButtonItem:self.showFromBarButtonItem animated:YES];
+      }
+      else if (self.showFromTabBar) {
+        [sheet showFromTabBar:self.showFromTabBar];
       }
       else {
         [sheet showFromRect:self.showFromRect inView:self.showFromViewController.view animated:YES];
@@ -204,6 +209,12 @@ typedef enum {
   [self show];
 }
 
+- (void)showFromTabBar:(UITabBar *)tabBar
+{
+  self.showFromTabBar = tabBar;
+  [self show];
+}
+
 - (void)showFromRect:(CGRect)rect
 {
   self.showFromRect = rect;
@@ -213,17 +224,17 @@ typedef enum {
 - (void)showImagePickerWithSourceType:(UIImagePickerControllerSourceType)sourceType
 {
   self.sourceType = sourceType;
-
+  
   UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
   mediaUI.allowsEditing = self.allowsEditing;
   mediaUI.delegate = self;
   mediaUI.mediaTypes = @[ (NSString *)kUTTypeImage ];
   mediaUI.sourceType = sourceType;
-
+  
   if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) && (sourceType == UIImagePickerControllerSourceTypePhotoLibrary)) {
     self.popoverController = [self makePopoverController:mediaUI];
     self.popoverController.delegate = self;
-
+    
     if (self.showFromBarButtonItem) {
       [self.popoverController presentPopoverFromBarButtonItem:self.showFromBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
@@ -244,24 +255,24 @@ typedef enum {
     self.completionBlock(nil, nil);
     return;
   }
-
+  
   if (self.lastPhoto == nil) {
     buttonIndex++;
   }
-
+  
   switch (buttonIndex) {
     case 0:
       self.completionBlock(nil, @{ UIImagePickerControllerOriginalImage : self.lastPhoto, UIImagePickerControllerEditedImage : self.lastPhoto });
       break;
-
+      
     case 1:
       [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypeCamera];
       return;
-
+      
     case 2:
       [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
       break;
-
+      
     default:
       break;
   }
@@ -272,13 +283,13 @@ typedef enum {
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
   UIImage *image = info[(self.allowsEditing ? UIImagePickerControllerEditedImage : UIImagePickerControllerOriginalImage)];
-
+  
   if (self.sourceType == UIImagePickerControllerSourceTypeCamera) {
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
   }
-
+  
   // if they chose the photo, and didn't edit, push in a preview
-
+  
   if (self.allowsEditing == NO && self.sourceType != UIImagePickerControllerSourceTypeCamera) {
     CZPhotoPreviewViewController *vc = [[CZPhotoPreviewViewController alloc] initWithImage:image chooseBlock:^{
       [self.popoverController dismissPopoverAnimated:YES];
@@ -286,7 +297,7 @@ typedef enum {
     } cancelBlock:^{
       [picker popViewControllerAnimated:YES];
     }];
-
+    
     [picker pushViewController:vc animated:YES];
   }
   else {
