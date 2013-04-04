@@ -35,6 +35,7 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
  */
 - (id)initWithPresentingViewController:(UIViewController *)aViewController withCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
 
+- (void)showFromTabBar:(UITabBar *)tabBar;
 - (void)showFromBarButtonItem:(UIBarButtonItem *)barButtonItem;
 - (void)showFromRect:(CGRect)rect;
 
