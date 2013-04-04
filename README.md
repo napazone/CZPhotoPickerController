@@ -42,6 +42,10 @@ Screenshots
 
 ![Allows editing](http://carezone.github.com/CZPhotoPickerController/images/picker2.PNG)
 
+Contributing
+------------
+
+Our uncrustify config is in ./config along with a shell script that will uncrustify the files in `./CZPhotoPickerController/`. It requires uncrustify 0.60 which is available via [homebrew](http://mxcl.github.com/homebrew/) with `brew update && brew install uncrustify`. Please run ./config/uncrustify.sh to clean up whitespace. Thank you!
 
 Credits
 -------
