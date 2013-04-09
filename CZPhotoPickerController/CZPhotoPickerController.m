@@ -29,7 +29,7 @@ typedef enum {
 <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate>
 
 @property(nonatomic,strong) ALAssetsLibrary *assetsLibrary;
-@property(nonatomic,copy) void (^completionBlock)(UIImagePickerController *imagePickerController, NSDictionary *imageInfoDict);
+@property(nonatomic,copy) CZPhotoPickerCompletionBlock completionBlock;
 @property(nonatomic,strong) UIImage *lastPhoto;
 @property(nonatomic,strong) UIPopoverController *popoverController;
 @property(nonatomic,weak) UIBarButtonItem *showFromBarButtonItem;
@@ -71,7 +71,6 @@ typedef enum {
   self = [super init];
 
   if (self) {
-    self.allowsEditing = NO;
     self.showFromViewController = aViewController;
     self.completionBlock = completionBlock;
     [self observeApplicationDidEnterBackgroundNotification];
@@ -215,7 +214,6 @@ typedef enum {
   self.sourceType = sourceType;
 
   UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
-  mediaUI.allowsEditing = self.allowsEditing;
   mediaUI.delegate = self;
   mediaUI.mediaTypes = @[ (NSString *)kUTTypeImage ];
   mediaUI.sourceType = sourceType;
@@ -280,8 +278,9 @@ typedef enum {
   // if they chose the photo, and didn't edit, push in a preview
 
   if (self.allowsEditing == NO && self.sourceType != UIImagePickerControllerSourceTypeCamera) {
-    CZPhotoPreviewViewController *vc = [[CZPhotoPreviewViewController alloc] initWithImage:image chooseBlock:^{
+    CZPhotoPreviewViewController *vc = [[CZPhotoPreviewViewController alloc] initWithImage:image cropOverlaySize:self.cropOverlaySize chooseBlock:^(UIImage *chosenImage) {
       [self.popoverController dismissPopoverAnimated:YES];
+      [info setValue:chosenImage forKey:UIImagePickerControllerEditedImage];
       self.completionBlock(picker, info);
     } cancelBlock:^{
       [picker popViewControllerAnimated:YES];
