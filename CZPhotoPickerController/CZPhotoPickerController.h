@@ -20,6 +20,15 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
 @interface CZPhotoPickerController : NSObject
 
 /**
+ Defaults to NO. If set to YES, the preview controller will
+ be presented, allowing you to scale and crop the selected
+ image.
+ 
+ NOTE: If set to YES, `allowsEditing` will be forced to `NO`.
+ */
+@property(nonatomic,assign) BOOL allowsCropping;
+
+/**
  Defaults to NO. Is passed to the UIImagePickerController
  */
 @property(nonatomic,assign) BOOL allowsEditing;

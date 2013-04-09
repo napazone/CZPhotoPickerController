@@ -16,6 +16,7 @@
 
 @interface CZPhotoPreviewViewController ()
 
+@property(nonatomic,assign) BOOL allowsCropping;
 @property(nonatomic,copy) dispatch_block_t cancelBlock;
 @property(nonatomic,copy) dispatch_block_t chooseBlock;
 @property(nonatomic,strong) UIImage *image;
@@ -29,7 +30,7 @@
 
 #pragma mark - Lifecycle
 
-- (id)initWithImage:(UIImage *)anImage chooseBlock:(dispatch_block_t)chooseBlock cancelBlock:(dispatch_block_t)cancelBlock
+- (id)initWithImage:(UIImage *)anImage allowsCropping:(BOOL)allowsCropping chooseBlock:(dispatch_block_t)chooseBlock cancelBlock:(dispatch_block_t)cancelBlock
 {
   NSParameterAssert(chooseBlock);
   NSParameterAssert(cancelBlock);
@@ -37,6 +38,7 @@
   self = [super initWithNibName:nil bundle:nil];
 
   if (self) {
+    _allowsCropping = allowsCropping;
     self.cancelBlock = cancelBlock;
     self.chooseBlock = chooseBlock;
     self.image = anImage;
