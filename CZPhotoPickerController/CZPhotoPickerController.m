@@ -214,6 +214,7 @@ typedef enum {
   self.sourceType = sourceType;
 
   UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
+  mediaUI.allowsEditing = self.allowsEditing;
   mediaUI.delegate = self;
   mediaUI.mediaTypes = @[ (NSString *)kUTTypeImage ];
   mediaUI.sourceType = sourceType;
