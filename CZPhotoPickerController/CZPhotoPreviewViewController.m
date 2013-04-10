@@ -105,12 +105,19 @@
   UIView *topMask = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([self previewFrame]), y)];
   UIView *bottomMask = [[UIView alloc] initWithFrame:CGRectMake(0, y + self.cropOverlaySize.height, CGRectGetWidth([self previewFrame]), CGRectGetHeight([self previewFrame]) - (y + self.cropOverlaySize.height))];
 
-  UIColor *backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.85];
+  UIColor *backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.6];
   topMask.backgroundColor = backgroundColor;
   bottomMask.backgroundColor = backgroundColor;
 
   [self.view insertSubview:topMask aboveSubview:self.imageView];  
   [self.view insertSubview:bottomMask aboveSubview:self.imageView];
+
+  CGRect highlightFrame = CGRectMake(0, CGRectGetMaxY(topMask.frame), CGRectGetWidth(self.view.frame), CGRectGetMinY(bottomMask.frame) - CGRectGetMaxY(topMask.frame));
+  UIView *highlightView = [[UIView alloc] initWithFrame:highlightFrame];
+  highlightView.backgroundColor = [UIColor clearColor];
+  highlightView.layer.borderColor = [UIColor colorWithWhite:1 alpha:.6].CGColor;
+  highlightView.layer.borderWidth = 1.0f;
+  [self.view insertSubview:highlightView aboveSubview:self.imageView];
 }
 
 #pragma mark - UIViewController
@@ -120,7 +127,10 @@
   [super viewDidLoad];
   self.imageView.image = self.image;
 
-  if (self.image.size.height > self.image.size.width) {
+  if (self.image.size.height >= self.image.size.width) {
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+  }
+  else {
     self.imageView.contentMode = UIViewContentModeScaleAspectFill;
   }
 
@@ -142,15 +152,12 @@
   }
 
   if (CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO) {
-    // UIImagePickerController is a UINavigationController subclass with wantsFullScreenLayout set to YES.
-    // We need to apply a small offset to make sure that the image view is centered beneath the overlay view.
-    // The offset is the height of the status bar / 2.
-    self.imageView.frame = CGRectMake(0, 10 + (CGRectGetHeight([self previewFrame]) - CGRectGetHeight(self.imageView.frame)) / 2, CGRectGetWidth(self.imageView.frame), CGRectGetHeight(self.imageView.frame));
+    self.imageView.frame = [self previewFrame];
 
     // Configure the preview label for the cropping use case
     self.previewLabel.shadowColor = [UIColor blackColor];
     self.previewLabel.shadowOffset = CGSizeMake(0, -1);
-    self.previewLabel.text = NSLocalizedString(@"Crop Photo", nil);
+    self.previewLabel.text = NSLocalizedString(@"Crop Preview", nil);
     [self.previewLabel sizeToFit];
     self.previewLabel.center = self.toolbar.center;
 
