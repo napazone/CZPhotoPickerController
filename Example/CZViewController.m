@@ -17,6 +17,7 @@
 #import "CZViewController.h"
 
 @interface CZViewController ()
+@property (weak, nonatomic) IBOutlet UISwitch *cropPreviewSwitch;
 @property(nonatomic,weak) IBOutlet UIImageView *imageView;
 @property(nonatomic,strong) CZPhotoPickerController *pickPhotoController;
 @end
@@ -34,11 +35,13 @@
       weakSelf.imageView.image = imageInfoDict[UIImagePickerControllerEditedImage];
     }
     else {
-      weakSelf.imageView.image = imageInfoDict[UIImagePickerControllerOriginalImage];
+      weakSelf.imageView.image = imageInfoDict[UIImagePickerControllerEditedImage];
     }
 
     if (weakSelf.modalViewController) {
-      [weakSelf dismissViewControllerAnimated:YES completion:nil];
+      [weakSelf dismissViewControllerAnimated:YES completion:^{
+        weakSelf.imageView.hidden = NO;
+      }];
     }
 
     weakSelf.pickPhotoController = nil;
@@ -48,7 +51,16 @@
 - (IBAction)takePicture:(id)sender
 {
   self.pickPhotoController = [self photoController];
-  self.pickPhotoController.allowsEditing = YES;
+
+  if (self.cropPreviewSwitch.on) {
+    self.pickPhotoController.allowsEditing = NO;
+    self.pickPhotoController.cropOverlaySize = CGSizeMake(320, 100);
+  }
+  else {
+    self.pickPhotoController.allowsEditing = YES;
+    self.pickPhotoController.cropOverlaySize = CGSizeZero;
+  }
+
   [self.pickPhotoController showFromBarButtonItem:sender];
 }
 
@@ -64,6 +76,8 @@
   self.imageView.layer.borderColor = [UIColor blackColor].CGColor;
 
   self.imageView.layer.cornerRadius = 5.0;
+
+  self.imageView.hidden = YES;
 }
 
 @end

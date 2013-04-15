@@ -20,6 +20,13 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
 @interface CZPhotoPickerController : NSObject
 
 /**
+ Defaults to CGSizeZero. When set to a non-zero value, a crop
+ overlay view will be displayed atop the selected image at the 
+ provided size. 
+ */
+@property(nonatomic,assign) CGSize cropOverlaySize;
+
+/**
  Defaults to NO. Is passed to the UIImagePickerController
  */
 @property(nonatomic,assign) BOOL allowsEditing;

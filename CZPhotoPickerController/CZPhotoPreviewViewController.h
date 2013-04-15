@@ -14,6 +14,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^CZPhotoPreviewChooseBlock)(UIImage *chosenImage);
+
 @interface CZPhotoPreviewViewController : UIViewController
 
 /**
@@ -21,9 +23,10 @@
  like the preview in Mail.app and Messages.app. It does not support pinch to zoom.
 
  @param anImage The `UIImage` to show. Will be presented aspect fit.
+ @param cropOverlaySize The size of the crop overlay view. Not displayed if equal to CGSizeZero.
  @param chooseBlock Block to be called if choose/use button is tapped.
  @param cancelBlock Block to be called if they cancel.
  */
-- (id)initWithImage:(UIImage *)anImage chooseBlock:(dispatch_block_t)chooseBlock cancelBlock:(dispatch_block_t)cancelBlock;
+- (id)initWithImage:(UIImage *)anImage cropOverlaySize:(CGSize)cropOverlaySize chooseBlock:(CZPhotoPreviewChooseBlock)chooseBlock cancelBlock:(dispatch_block_t)cancelBlock;
 
 @end
