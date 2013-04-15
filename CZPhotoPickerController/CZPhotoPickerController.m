@@ -283,7 +283,6 @@ typedef enum {
       [self.popoverController dismissPopoverAnimated:YES];
       NSMutableDictionary *mutableImageInfo = [info mutableCopy];
       mutableImageInfo[UIImagePickerControllerEditedImage] = chosenImage;
-      //[info setValue:chosenImage forKey:UIImagePickerControllerEditedImage];
       self.completionBlock(picker, [mutableImageInfo copy]);
     } cancelBlock:^{
       [picker popViewControllerAnimated:YES];
