@@ -53,29 +53,12 @@
 
 - (UIImage *)cropImage:(UIImage *)image
 {
-  BOOL imageIsLandscape = (self.image.size.width > self.image.size.height);
-  CGFloat scale;
-
-  if (imageIsLandscape == YES) {
-    scale = roundf(self.image.size.width / self.cropOverlaySize.width);
-  }
-  else {
-    scale = roundf(self.image.size.height / self.cropOverlaySize.height);
-  }
-
+  CGFloat scale = self.image.size.width / self.cropOverlaySize.width;
   CGSize scaledCropSize = CGSizeMake(self.cropOverlaySize.width * scale, self.cropOverlaySize.height * scale);
 
-  CGFloat cropX = 0;
-  CGFloat cropY = 0;
+  CGFloat cropY = roundf((self.image.size.height - scaledCropSize.height) / 2);
+  CGRect cropRect = CGRectMake(0, cropY, self.image.size.width, scaledCropSize.height);
 
-  if (imageIsLandscape == YES) {
-    cropY = (self.image.size.height - scaledCropSize.height) / 2;
-  }
-  else {
-    cropX = (self.image.size.width - scaledCropSize.width) / 2;
-  }
-
-  CGRect cropRect = CGRectMake(cropX, cropY, scaledCropSize.width, scaledCropSize.height);
   CGImageRef croppedImageRef = CGImageCreateWithImageInRect(self.image.CGImage, cropRect);
   UIImage *croppedImage = [UIImage imageWithCGImage:croppedImageRef scale:self.image.scale orientation:self.image.imageOrientation];
 
@@ -95,13 +78,14 @@
 
 - (CGRect)previewFrame
 {
-  return CGRectMake(0, 20, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.toolbar.frame) - 20);
+  return CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.toolbar.frame));
 }
 
 - (void)setupCropOverlay
 {
   CGFloat y = (CGRectGetHeight([self previewFrame]) - self.cropOverlaySize.height) / 2;
-
+  y -= 10;
+  
   UIView *topMask = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([self previewFrame]), y)];
   UIView *bottomMask = [[UIView alloc] initWithFrame:CGRectMake(0, y + self.cropOverlaySize.height, CGRectGetWidth([self previewFrame]), CGRectGetHeight([self previewFrame]) - (y + self.cropOverlaySize.height))];
 
@@ -126,13 +110,25 @@
 {
   [super viewDidLoad];
   self.imageView.image = self.image;
+  self.imageView.frame = [self previewFrame];
 
-  if (self.image.size.height >= self.image.size.width) {
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+  CGFloat widthRatio = self.imageView.frame.size.width / self.image.size.width;
+  CGFloat heightRatio = self.imageView.frame.size.height / self.image.size.height;
+
+  UIViewContentMode mode;
+
+  if (widthRatio < heightRatio) {
+    mode = UIViewContentModeScaleAspectFit;
   }
   else {
-    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    mode = UIViewContentModeScaleAspectFill;
   }
+  
+  self.imageView.contentMode = mode;
+  
+  CGRect imageViewFrame = self.imageView.frame;
+  imageViewFrame.origin.y = (CGRectGetHeight([self previewFrame]) - CGRectGetHeight(self.imageView.frame)) / 2;
+  self.imageView.frame = imageViewFrame;
 
   // No toolbar on iPad, use the nav bar. Mimic how Mail.app’s picker works
 

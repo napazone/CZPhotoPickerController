@@ -281,8 +281,10 @@ typedef enum {
   if (self.allowsEditing == NO && self.sourceType != UIImagePickerControllerSourceTypeCamera) {
     CZPhotoPreviewViewController *vc = [[CZPhotoPreviewViewController alloc] initWithImage:image cropOverlaySize:self.cropOverlaySize chooseBlock:^(UIImage *chosenImage) {
       [self.popoverController dismissPopoverAnimated:YES];
-      [info setValue:chosenImage forKey:UIImagePickerControllerEditedImage];
-      self.completionBlock(picker, info);
+      NSMutableDictionary *mutableImageInfo = [info mutableCopy];
+      mutableImageInfo[UIImagePickerControllerEditedImage] = chosenImage;
+      //[info setValue:chosenImage forKey:UIImagePickerControllerEditedImage];
+      self.completionBlock(picker, [mutableImageInfo copy]);
     } cancelBlock:^{
       [picker popViewControllerAnimated:YES];
     }];

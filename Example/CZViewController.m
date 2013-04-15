@@ -34,7 +34,7 @@
       weakSelf.imageView.image = imageInfoDict[UIImagePickerControllerEditedImage];
     }
     else {
-      weakSelf.imageView.image = imageInfoDict[UIImagePickerControllerOriginalImage];
+      weakSelf.imageView.image = imageInfoDict[UIImagePickerControllerEditedImage];
     }
 
     if (weakSelf.modalViewController) {
@@ -48,7 +48,8 @@
 - (IBAction)takePicture:(id)sender
 {
   self.pickPhotoController = [self photoController];
-  self.pickPhotoController.allowsEditing = YES;
+  //self.pickPhotoController.allowsEditing = YES;
+  self.pickPhotoController.cropOverlaySize = CGSizeMake(320.0, 200.0f);
   [self.pickPhotoController showFromBarButtonItem:sender];
 }
 
