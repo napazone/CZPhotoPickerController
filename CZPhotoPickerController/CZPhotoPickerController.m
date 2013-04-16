@@ -118,6 +118,16 @@ typedef enum {
   }
 }
 
+- (void)dismissAnimated:(BOOL)animated
+{
+  if (self.showFromViewController.presentedViewController) {
+    [self.showFromViewController dismissViewControllerAnimated:animated completion:nil];
+  }
+  else if (self.popoverController) {
+    [self.popoverController dismissPopoverAnimated:animated];
+  }
+}
+
 - (void)getLastPhotoTakenWithCompletionBlock:(void (^)(UIImage *))completionBlock
 {
   [self.assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {

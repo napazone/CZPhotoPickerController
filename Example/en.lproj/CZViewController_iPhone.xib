@@ -173,35 +173,6 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUITapGestureRecognizer" id="820567517"/>
-			<object class="IBUILabel" id="224374779">
-				<nil key="NSNextResponder"/>
-				<int key="NSvFlags">292</int>
-				<string key="NSFrameSize">{42, 21}</string>
-				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<bool key="IBUIOpaque">NO</bool>
-				<bool key="IBUIClipsSubviews">YES</bool>
-				<int key="IBUIContentMode">7</int>
-				<bool key="IBUIUserInteractionEnabled">NO</bool>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-				<string key="IBUIText">Label</string>
-				<object class="NSColor" key="IBUITextColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MCAwIDAAA</bytes>
-					<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
-				</object>
-				<nil key="IBUIHighlightedColor"/>
-				<int key="IBUIBaselineAdjustment">0</int>
-				<object class="IBUIFontDescription" key="IBUIFontDescription">
-					<int key="type">1</int>
-					<double key="pointSize">17</double>
-				</object>
-				<object class="NSFont" key="IBUIFont">
-					<string key="NSName">Helvetica</string>
-					<double key="NSSize">17</double>
-					<int key="NSfFlags">16</int>
-				</object>
-				<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<array class="NSMutableArray" key="connectionRecords">
@@ -321,11 +292,6 @@
 						<reference key="parent" ref="692523648"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">25</int>
-						<reference key="object" ref="224374779"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
 						<reference key="object" ref="978592644"/>
 						<reference key="parent" ref="774585933"/>
@@ -348,7 +314,6 @@
 				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="23.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="24.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="25.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="27.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

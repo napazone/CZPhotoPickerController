@@ -31,20 +31,17 @@
   __weak typeof(self) weakSelf = self;
 
   return [[CZPhotoPickerController alloc] initWithPresentingViewController:self withCompletionBlock:^(UIImagePickerController *imagePickerController, NSDictionary *imageInfoDict) {
-    if (imagePickerController.allowsEditing) {
-      weakSelf.imageView.image = imageInfoDict[UIImagePickerControllerEditedImage];
-    }
-    else {
-      weakSelf.imageView.image = imageInfoDict[UIImagePickerControllerEditedImage];
+
+    UIImage *image = imageInfoDict[UIImagePickerControllerEditedImage];
+    if (!image) {
+      image = imageInfoDict[UIImagePickerControllerOriginalImage];
     }
 
-    if (weakSelf.modalViewController) {
-      [weakSelf dismissViewControllerAnimated:YES completion:^{
-        weakSelf.imageView.hidden = NO;
-      }];
-    }
+    weakSelf.imageView.image = image;
 
+    [weakSelf.pickPhotoController dismissAnimated:YES];
     weakSelf.pickPhotoController = nil;
+
   }];
 }
 
@@ -74,10 +71,7 @@
 
   self.imageView.layer.borderWidth = 1.0;
   self.imageView.layer.borderColor = [UIColor blackColor].CGColor;
-
   self.imageView.layer.cornerRadius = 5.0;
-
-  self.imageView.hidden = YES;
 }
 
 @end
