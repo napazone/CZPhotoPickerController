@@ -158,6 +158,8 @@
     [self.previewLabel sizeToFit];
     self.previewLabel.center = self.toolbar.center;
 
+    self.title = self.previewLabel.text;
+
     [self setupCropOverlay];
   }
 
