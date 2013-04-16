@@ -168,7 +168,9 @@
 {
   self.contentSizeForViewInPopover = CGSizeMake(320, 480);
 
-  [self setupCropOverlay];
+  if (CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO) {
+    [self setupCropOverlay];
+  }
 
   [super viewWillAppear:animated];
 }
