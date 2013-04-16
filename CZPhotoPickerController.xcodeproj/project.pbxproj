@@ -65,6 +65,8 @@
 		700B439F16CA06AA002ECF78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		700B43A116CA0712002ECF78 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		700B43A316CAEB0C002ECF78 /* CZPhotoPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZPhotoPreviewViewController.xib; sourceTree = "<group>"; };
+		F0158E1D171D84F500EC8AAF /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F0158E1F171D860100EC8AAF /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				700B437116CA05B0002ECF78 /* CZPhotoPickerController-Prefix.pch */,
+				F0158E1E171D84F500EC8AAF /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				fr,
 			);
 			mainGroup = 700B436116CA05B0002ECF78;
 			productRefGroup = 700B436B16CA05B0002ECF78 /* Products */;
@@ -296,6 +300,15 @@
 				700B438816CA05B0002ECF78 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F0158E1E171D84F500EC8AAF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0158E1D171D84F500EC8AAF /* en */,
+				F0158E1F171D860100EC8AAF /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -427,6 +440,7 @@
 				700B439116CA05B0002ECF78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		700B439216CA05B0002ECF78 /* Build configuration list for PBXNativeTarget "CZPhotoPickerControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -435,6 +449,7 @@
 				700B439416CA05B0002ECF78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
