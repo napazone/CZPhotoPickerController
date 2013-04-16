@@ -85,8 +85,7 @@
 - (void)setupCropOverlay
 {
   CGFloat y = (CGRectGetHeight([self previewFrame]) - self.cropOverlaySize.height) / 2;
-  y -= 10;
-  
+
   UIView *topMask = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([self previewFrame]), y)];
   UIView *bottomMask = [[UIView alloc] initWithFrame:CGRectMake(0, y + self.cropOverlaySize.height, CGRectGetWidth([self previewFrame]), CGRectGetHeight([self previewFrame]) - (y + self.cropOverlaySize.height))];
 
@@ -159,8 +158,6 @@
     self.previewLabel.center = self.toolbar.center;
 
     self.title = self.previewLabel.text;
-
-    [self setupCropOverlay];
   }
 
   [self.view bringSubviewToFront:self.toolbar];
@@ -169,9 +166,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  CGSize size = CGSizeMake(320, 480);
+  self.contentSizeForViewInPopover = CGSizeMake(320, 480);
 
-  self.contentSizeForViewInPopover = size;
+  [self setupCropOverlay];
 
   [super viewWillAppear:animated];
 }
