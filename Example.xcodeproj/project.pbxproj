@@ -24,6 +24,7 @@
 		5C58895416CB3D4F00861AA5 /* CZPhotoPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C58895116CB3D4F00861AA5 /* CZPhotoPreviewViewController.xib */; };
 		5C58895616CB3D6800861AA5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58895516CB3D6800861AA5 /* AssetsLibrary.framework */; };
 		5C58895816CB3D9000861AA5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58895716CB3D9000861AA5 /* MobileCoreServices.framework */; };
+		F0158E2B171D86D400EC8AAF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0158E29171D86D400EC8AAF /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		5C58895116CB3D4F00861AA5 /* CZPhotoPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CZPhotoPreviewViewController.xib; path = CZPhotoPickerController/CZPhotoPreviewViewController.xib; sourceTree = "<group>"; };
 		5C58895516CB3D6800861AA5 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5C58895716CB3D9000861AA5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F0158E2A171D86D400EC8AAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = CZPhotoPickerController/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F0158E2C171D86E000EC8AAF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = CZPhotoPickerController/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +138,17 @@
 				5C58894F16CB3D4F00861AA5 /* CZPhotoPreviewViewController.h */,
 				5C58895016CB3D4F00861AA5 /* CZPhotoPreviewViewController.m */,
 				5C58895116CB3D4F00861AA5 /* CZPhotoPreviewViewController.xib */,
+				F0158E20171D86AC00EC8AAF /* Supporting Files */,
 			);
 			name = CZPhotoPickerController;
+			sourceTree = "<group>";
+		};
+		F0158E20171D86AC00EC8AAF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F0158E29171D86D400EC8AAF /* Localizable.strings */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +187,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				fr,
 			);
 			mainGroup = 5C58891A16CB3BF900861AA5;
 			productRefGroup = 5C58892416CB3BF900861AA5 /* Products */;
@@ -198,6 +211,7 @@
 				5C58894316CB3BFA00861AA5 /* CZViewController_iPhone.xib in Resources */,
 				5C58894616CB3BFA00861AA5 /* CZViewController_iPad.xib in Resources */,
 				5C58895416CB3D4F00861AA5 /* CZPhotoPreviewViewController.xib in Resources */,
+				F0158E2B171D86D400EC8AAF /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +255,15 @@
 				5C58894516CB3BFA00861AA5 /* en */,
 			);
 			name = CZViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F0158E29171D86D400EC8AAF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0158E2A171D86D400EC8AAF /* en */,
+				F0158E2C171D86E000EC8AAF /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
