@@ -23,17 +23,21 @@ Usage:
         weakSelf.imageView.image = imageInfoDict[UIImagePickerControllerOriginalImage];
       }
 
-      if (weakSelf.modalViewController) {
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
-      }
+      [weakSelf.photoPicker dismissAnimated:YES];
+      weakSelf.photoPicker = nil;
 
     }];
 
-    photoPicker.allowsEditing = YES;
+    self.photoPicker.allowsEditing = YES; // optional
 
-    [photoPicker showFromBarButtonItem:btn];
+    self.photoPicker.cropOverlaySize = CGSizeMake(320, 160); // optional
 
-If `allowsEditing` is `YES`, the user will be asked to resize the chosen image. Otherwise a preview is shown.
+    [self.photoPicker showFromBarButtonItem:btn];
+
+If `allowsEditing` is `YES`, the user will be asked to resize the chosen image. Otherwise, a preview is shown.
+
+If `cropOverlaySize` is set, the picker will crop the image to the aspect ratio of `cropOverlaySize` and the preview screen will highlight the cropped area. **We'd love a pull request to support pinch and zoom too!**
+
 
 Screenshots
 -----------
