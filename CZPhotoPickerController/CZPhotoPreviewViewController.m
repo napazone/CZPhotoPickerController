@@ -61,6 +61,7 @@
 
   CGImageRef croppedImageRef = CGImageCreateWithImageInRect(self.image.CGImage, cropRect);
   UIImage *croppedImage = [UIImage imageWithCGImage:croppedImageRef scale:self.image.scale orientation:self.image.imageOrientation];
+  CGImageRelease(croppedImageRef);
 
   return croppedImage;
 }
