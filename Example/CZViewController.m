@@ -47,6 +47,10 @@
 
 - (IBAction)takePicture:(id)sender
 {
+  if (self.pickPhotoController) {
+    return;
+  }
+
   self.pickPhotoController = [self photoController];
 
   if (self.cropPreviewSwitch.on) {
