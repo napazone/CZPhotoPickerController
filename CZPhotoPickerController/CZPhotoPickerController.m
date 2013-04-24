@@ -72,8 +72,9 @@ typedef enum {
   self = [super init];
 
   if (self) {
-    self.showFromViewController = aViewController;
     self.completionBlock = completionBlock;
+    self.offerLastTaken = YES;
+    self.showFromViewController = aViewController;
     [self observeApplicationDidEnterBackgroundNotification];
   }
 
@@ -185,7 +186,7 @@ typedef enum {
     [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
   }
   else {
-    [self getLastPhotoTakenWithCompletionBlock:^(UIImage *lastPhoto) {
+    void (^showActionSheetBlock)(UIImage *) = ^(UIImage *lastPhoto) {
 
       self.lastPhoto = lastPhoto;
 
@@ -207,7 +208,14 @@ typedef enum {
       else {
         [sheet showFromRect:self.showFromRect inView:self.showFromViewController.view animated:YES];
       }
-    }];
+    };
+
+    if (self.offerLastTaken) {
+      [self getLastPhotoTakenWithCompletionBlock:showActionSheetBlock];
+    }
+    else {
+      showActionSheetBlock(nil);
+    }
   }
 }
 
