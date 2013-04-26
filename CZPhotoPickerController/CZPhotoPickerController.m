@@ -75,6 +75,7 @@ typedef enum {
   if (self) {
     self.completionBlock = completionBlock;
     self.offerLastTaken = YES;
+    self.saveToCameraRoll = YES;
     self.showFromViewController = aViewController;
     [self observeApplicationDidEnterBackgroundNotification];
   }
@@ -356,7 +357,7 @@ typedef enum {
 {
   UIImage *image = info[(self.allowsEditing ? UIImagePickerControllerEditedImage : UIImagePickerControllerOriginalImage)];
 
-  if (self.sourceType == UIImagePickerControllerSourceTypeCamera) {
+  if (self.sourceType == UIImagePickerControllerSourceTypeCamera && self.saveToCameraRoll) {
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
   }
 
