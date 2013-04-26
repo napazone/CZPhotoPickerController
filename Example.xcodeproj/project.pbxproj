@@ -24,6 +24,7 @@
 		5C58895416CB3D4F00861AA5 /* CZPhotoPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C58895116CB3D4F00861AA5 /* CZPhotoPreviewViewController.xib */; };
 		5C58895616CB3D6800861AA5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58895516CB3D6800861AA5 /* AssetsLibrary.framework */; };
 		5C58895816CB3D9000861AA5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58895716CB3D9000861AA5 /* MobileCoreServices.framework */; };
+		5CAAC3501729A25700535284 /* CZCropPreviewOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAAC34F1729A25700535284 /* CZCropPreviewOverlayView.m */; };
 		F0158E2B171D86D400EC8AAF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0158E29171D86D400EC8AAF /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,8 @@
 		5C58895116CB3D4F00861AA5 /* CZPhotoPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CZPhotoPreviewViewController.xib; path = CZPhotoPickerController/CZPhotoPreviewViewController.xib; sourceTree = "<group>"; };
 		5C58895516CB3D6800861AA5 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5C58895716CB3D9000861AA5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		5CAAC34E1729A25700535284 /* CZCropPreviewOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CZCropPreviewOverlayView.h; path = CZPhotoPickerController/CZCropPreviewOverlayView.h; sourceTree = "<group>"; };
+		5CAAC34F1729A25700535284 /* CZCropPreviewOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CZCropPreviewOverlayView.m; path = CZPhotoPickerController/CZCropPreviewOverlayView.m; sourceTree = "<group>"; };
 		F0158E2A171D86D400EC8AAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = CZPhotoPickerController/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F0158E2C171D86E000EC8AAF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = CZPhotoPickerController/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +136,8 @@
 		5C58894C16CB3D3B00861AA5 /* CZPhotoPickerController */ = {
 			isa = PBXGroup;
 			children = (
+				5CAAC34E1729A25700535284 /* CZCropPreviewOverlayView.h */,
+				5CAAC34F1729A25700535284 /* CZCropPreviewOverlayView.m */,
 				5C58894D16CB3D4F00861AA5 /* CZPhotoPickerController.h */,
 				5C58894E16CB3D4F00861AA5 /* CZPhotoPickerController.m */,
 				5C58894F16CB3D4F00861AA5 /* CZPhotoPreviewViewController.h */,
@@ -227,6 +232,7 @@
 				5C58894016CB3BFA00861AA5 /* CZViewController.m in Sources */,
 				5C58895216CB3D4F00861AA5 /* CZPhotoPickerController.m in Sources */,
 				5C58895316CB3D4F00861AA5 /* CZPhotoPreviewViewController.m in Sources */,
+				5CAAC3501729A25700535284 /* CZCropPreviewOverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

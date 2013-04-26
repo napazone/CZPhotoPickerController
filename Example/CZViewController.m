@@ -52,6 +52,7 @@
   }
 
   self.pickPhotoController = [self photoController];
+  self.pickPhotoController.saveToCameraRoll = NO;
 
   if (self.cropPreviewSwitch.on) {
     self.pickPhotoController.allowsEditing = NO;
