@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CAAC3531729EA6700535284 /* CZCropPreviewOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAAC3521729EA6700535284 /* CZCropPreviewOverlayView.m */; };
 		700B436E16CA05B0002ECF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700B436D16CA05B0002ECF78 /* Foundation.framework */; };
 		700B437D16CA05B0002ECF78 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700B437C16CA05B0002ECF78 /* SenTestingKit.framework */; };
 		700B437F16CA05B0002ECF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700B437E16CA05B0002ECF78 /* UIKit.framework */; };
@@ -47,6 +48,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5CAAC3511729EA6700535284 /* CZCropPreviewOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZCropPreviewOverlayView.h; sourceTree = "<group>"; };
+		5CAAC3521729EA6700535284 /* CZCropPreviewOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZCropPreviewOverlayView.m; sourceTree = "<group>"; };
 		700B436A16CA05B0002ECF78 /* libCZPhotoPickerController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCZPhotoPickerController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		700B436D16CA05B0002ECF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		700B437116CA05B0002ECF78 /* CZPhotoPickerController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CZPhotoPickerController-Prefix.pch"; sourceTree = "<group>"; };
@@ -65,8 +68,8 @@
 		700B439F16CA06AA002ECF78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		700B43A116CA0712002ECF78 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		700B43A316CAEB0C002ECF78 /* CZPhotoPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CZPhotoPreviewViewController.xib; sourceTree = "<group>"; };
-		F0158E1D171D84F500EC8AAF /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F0158E1F171D860100EC8AAF /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F0158E1D171D84F500EC8AAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F0158E1F171D860100EC8AAF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 		700B436F16CA05B0002ECF78 /* CZPhotoPickerController */ = {
 			isa = PBXGroup;
 			children = (
+				5CAAC3511729EA6700535284 /* CZCropPreviewOverlayView.h */,
+				5CAAC3521729EA6700535284 /* CZCropPreviewOverlayView.m */,
 				700B439516CA05E9002ECF78 /* CZPhotoPickerController.h */,
 				700B439616CA05E9002ECF78 /* CZPhotoPickerController.m */,
 				700B439916CA061E002ECF78 /* CZPhotoPreviewViewController.h */,
@@ -270,6 +275,7 @@
 			files = (
 				700B439716CA05E9002ECF78 /* CZPhotoPickerController.m in Sources */,
 				700B439B16CA061E002ECF78 /* CZPhotoPreviewViewController.m in Sources */,
+				5CAAC3531729EA6700535284 /* CZCropPreviewOverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

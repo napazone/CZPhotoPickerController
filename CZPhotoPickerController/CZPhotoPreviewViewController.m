@@ -13,12 +13,12 @@
 // limitations under the License.
 
 #import "CZPhotoPreviewViewController.h"
-#import <QuartzCore/QuartzCore.h>
+#import "CZCropPreviewOverlayView.h"
 
 @interface CZPhotoPreviewViewController ()
 
 @property(nonatomic,copy) dispatch_block_t cancelBlock;
-@property(nonatomic,copy) CZPhotoPreviewChooseBlock chooseBlock;
+@property(nonatomic,copy) dispatch_block_t chooseBlock;
 @property(nonatomic,assign) CGSize cropOverlaySize;
 @property(nonatomic,strong) UIImage *image;
 @property(nonatomic,weak) IBOutlet UIImageView *imageView;
@@ -31,7 +31,7 @@
 
 #pragma mark - Lifecycle
 
-- (id)initWithImage:(UIImage *)anImage cropOverlaySize:(CGSize)cropOverlaySize chooseBlock:(CZPhotoPreviewChooseBlock)chooseBlock cancelBlock:(dispatch_block_t)cancelBlock
+- (id)initWithImage:(UIImage *)anImage cropOverlaySize:(CGSize)cropOverlaySize chooseBlock:(dispatch_block_t)chooseBlock cancelBlock:(dispatch_block_t)cancelBlock
 {
   NSParameterAssert(chooseBlock);
   NSParameterAssert(cancelBlock);
@@ -51,21 +51,6 @@
 
 #pragma mark - Methods
 
-- (UIImage *)cropImage:(UIImage *)image
-{
-  CGFloat scale = self.image.size.width / self.cropOverlaySize.width;
-  CGSize scaledCropSize = CGSizeMake(self.cropOverlaySize.width * scale, self.cropOverlaySize.height * scale);
-
-  CGFloat cropY = roundf((self.image.size.height - scaledCropSize.height) / 2);
-  CGRect cropRect = CGRectMake(0, cropY, self.image.size.width, scaledCropSize.height);
-
-  CGImageRef croppedImageRef = CGImageCreateWithImageInRect(self.image.CGImage, cropRect);
-  UIImage *croppedImage = [UIImage imageWithCGImage:croppedImageRef scale:self.image.scale orientation:self.image.imageOrientation];
-  CGImageRelease(croppedImageRef);
-
-  return croppedImage;
-}
-
 - (IBAction)didCancel:(id)sender
 {
   self.cancelBlock();
@@ -73,35 +58,24 @@
 
 - (IBAction)didChoose:(id)sender
 {
-  UIImage *croppedImage = [self cropImage:self.image];
-  self.chooseBlock(croppedImage);
+  self.chooseBlock();
 }
 
 - (CGRect)previewFrame
 {
-  return CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.toolbar.frame));
+  CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
+
+  if (self.toolbar.hidden == NO) {
+    frame.size.height -= CGRectGetHeight(self.toolbar.frame);
+  }
+
+  return frame;
 }
 
 - (void)setupCropOverlay
 {
-  CGFloat y = (CGRectGetHeight([self previewFrame]) - self.cropOverlaySize.height) / 2;
-
-  UIView *topMask = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([self previewFrame]), y)];
-  UIView *bottomMask = [[UIView alloc] initWithFrame:CGRectMake(0, y + self.cropOverlaySize.height, CGRectGetWidth([self previewFrame]), CGRectGetHeight([self previewFrame]) - (y + self.cropOverlaySize.height))];
-
-  UIColor *backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.6];
-  topMask.backgroundColor = backgroundColor;
-  bottomMask.backgroundColor = backgroundColor;
-
-  [self.view insertSubview:topMask aboveSubview:self.imageView];  
-  [self.view insertSubview:bottomMask aboveSubview:self.imageView];
-
-  CGRect highlightFrame = CGRectMake(0, CGRectGetMaxY(topMask.frame), CGRectGetWidth(self.view.frame), CGRectGetMinY(bottomMask.frame) - CGRectGetMaxY(topMask.frame));
-  UIView *highlightView = [[UIView alloc] initWithFrame:highlightFrame];
-  highlightView.backgroundColor = [UIColor clearColor];
-  highlightView.layer.borderColor = [UIColor colorWithWhite:1 alpha:.6].CGColor;
-  highlightView.layer.borderWidth = 1.0f;
-  [self.view insertSubview:highlightView aboveSubview:self.imageView];
+  CZCropPreviewOverlayView *overlay = [[CZCropPreviewOverlayView alloc] initWithFrame:self.previewFrame cropOverlaySize:self.cropOverlaySize];
+  [self.view insertSubview:overlay aboveSubview:self.imageView];
 }
 
 #pragma mark - UIViewController
