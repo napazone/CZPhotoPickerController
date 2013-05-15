@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C2BA57B1743AC7100C5960D /* CZCroppingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2BA57A1743AC7100C5960D /* CZCroppingScrollView.m */; };
 		5C58892716CB3BF900861AA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58892616CB3BF900861AA5 /* UIKit.framework */; };
 		5C58892916CB3BF900861AA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58892816CB3BF900861AA5 /* Foundation.framework */; };
 		5C58892B16CB3BF900861AA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58892A16CB3BF900861AA5 /* CoreGraphics.framework */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C2BA5791743AC7100C5960D /* CZCroppingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CZCroppingScrollView.h; path = CZPhotoPickerController/CZCroppingScrollView.h; sourceTree = "<group>"; };
+		5C2BA57A1743AC7100C5960D /* CZCroppingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CZCroppingScrollView.m; path = CZPhotoPickerController/CZCroppingScrollView.m; sourceTree = "<group>"; };
 		5C58892316CB3BF900861AA5 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C58892616CB3BF900861AA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5C58892816CB3BF900861AA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -138,6 +141,8 @@
 			children = (
 				5CAAC34E1729A25700535284 /* CZCropPreviewOverlayView.h */,
 				5CAAC34F1729A25700535284 /* CZCropPreviewOverlayView.m */,
+				5C2BA5791743AC7100C5960D /* CZCroppingScrollView.h */,
+				5C2BA57A1743AC7100C5960D /* CZCroppingScrollView.m */,
 				5C58894D16CB3D4F00861AA5 /* CZPhotoPickerController.h */,
 				5C58894E16CB3D4F00861AA5 /* CZPhotoPickerController.m */,
 				5C58894F16CB3D4F00861AA5 /* CZPhotoPreviewViewController.h */,
@@ -233,6 +238,7 @@
 				5C58895216CB3D4F00861AA5 /* CZPhotoPickerController.m in Sources */,
 				5C58895316CB3D4F00861AA5 /* CZPhotoPreviewViewController.m in Sources */,
 				5CAAC3501729A25700535284 /* CZCropPreviewOverlayView.m in Sources */,
+				5C2BA57B1743AC7100C5960D /* CZCroppingScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
