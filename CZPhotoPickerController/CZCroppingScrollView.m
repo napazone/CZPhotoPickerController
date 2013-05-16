@@ -63,7 +63,7 @@ double czRad(double deg)
     default:
       rectTransform = CGAffineTransformIdentity;
   }
-  ;
+
   rectTransform = CGAffineTransformScale(rectTransform, self.image.scale, self.image.scale);
 
   CGImageRef imageRef = CGImageCreateWithImageInRect(self.image.CGImage, CGRectApplyAffineTransform(cropRect, rectTransform));
