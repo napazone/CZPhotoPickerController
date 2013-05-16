@@ -13,16 +13,16 @@
 // limitations under the License.
 
 #import "CZPhotoPreviewViewController.h"
-#import "CZCropPreviewOverlayView.h"
+#import "CZCroppingScrollView.h"
 
 @interface CZPhotoPreviewViewController ()
 
 @property(nonatomic,copy) dispatch_block_t cancelBlock;
-@property(nonatomic,copy) dispatch_block_t chooseBlock;
+@property(nonatomic,copy) void (^chooseBlock)(UIImage *image);
 @property(nonatomic,assign) CGSize cropOverlaySize;
 @property(nonatomic,strong) UIImage *image;
-@property(nonatomic,weak) IBOutlet UIImageView *imageView;
 @property(nonatomic,weak) IBOutlet UILabel *previewLabel;
+@property(nonatomic,weak) IBOutlet CZCroppingScrollView *croppingScrollView;
 @property(nonatomic,weak) IBOutlet UIToolbar *toolbar;
 
 @end
@@ -31,7 +31,7 @@
 
 #pragma mark - Lifecycle
 
-- (id)initWithImage:(UIImage *)anImage cropOverlaySize:(CGSize)cropOverlaySize chooseBlock:(dispatch_block_t)chooseBlock cancelBlock:(dispatch_block_t)cancelBlock
+- (id)initWithImage:(UIImage *)anImage cropOverlaySize:(CGSize)cropOverlaySize chooseBlock:(void (^)(UIImage *image))chooseBlock cancelBlock:(dispatch_block_t)cancelBlock
 {
   NSParameterAssert(chooseBlock);
   NSParameterAssert(cancelBlock);
@@ -51,6 +51,11 @@
 
 #pragma mark - Methods
 
+- (BOOL)allowMoveAndScale
+{
+  return (CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO);
+}
+
 - (IBAction)didCancel:(id)sender
 {
   self.cancelBlock();
@@ -58,24 +63,11 @@
 
 - (IBAction)didChoose:(id)sender
 {
-  self.chooseBlock();
-}
-
-- (CGRect)previewFrame
-{
-  CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
-
-  if (self.toolbar.hidden == NO) {
-    frame.size.height -= CGRectGetHeight(self.toolbar.frame);
+  if (self.allowMoveAndScale) {
+    self.image = [self.croppingScrollView croppedImage];
   }
 
-  return frame;
-}
-
-- (void)setupCropOverlay
-{
-  CZCropPreviewOverlayView *overlay = [[CZCropPreviewOverlayView alloc] initWithFrame:self.previewFrame cropOverlaySize:self.cropOverlaySize];
-  [self.view insertSubview:overlay aboveSubview:self.imageView];
+  self.chooseBlock(self.image);
 }
 
 #pragma mark - UIViewController
@@ -83,26 +75,6 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  self.imageView.image = self.image;
-  self.imageView.frame = [self previewFrame];
-
-  CGFloat widthRatio = self.imageView.frame.size.width / self.image.size.width;
-  CGFloat heightRatio = self.imageView.frame.size.height / self.image.size.height;
-
-  UIViewContentMode mode;
-
-  if (widthRatio < heightRatio) {
-    mode = UIViewContentModeScaleAspectFit;
-  }
-  else {
-    mode = UIViewContentModeScaleAspectFill;
-  }
-  
-  self.imageView.contentMode = mode;
-  
-  CGRect imageViewFrame = self.imageView.frame;
-  imageViewFrame.origin.y = (CGRectGetHeight([self previewFrame]) - CGRectGetHeight(self.imageView.frame)) / 2;
-  self.imageView.frame = imageViewFrame;
 
   // No toolbar on iPad, use the nav bar. Mimic how Mail.app’s picker works
 
@@ -121,13 +93,12 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
   }
 
-  if (CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO) {
-    self.imageView.frame = [self previewFrame];
-
+  if (self.allowMoveAndScale) {
     // Configure the preview label for the cropping use case
+
     self.previewLabel.shadowColor = [UIColor blackColor];
     self.previewLabel.shadowOffset = CGSizeMake(0, -1);
-    self.previewLabel.text = NSLocalizedString(@"Crop Preview", nil);
+    self.previewLabel.text = NSLocalizedString(@"Move and Scale", nil);
     [self.previewLabel sizeToFit];
     self.previewLabel.center = self.toolbar.center;
 
@@ -142,9 +113,7 @@
 {
   self.contentSizeForViewInPopover = CGSizeMake(320, 480);
 
-  if (CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO) {
-    [self setupCropOverlay];
-  }
+  [self.croppingScrollView setImage:self.image withCropSize:self.cropOverlaySize];
 
   [super viewWillAppear:animated];
 }

@@ -15,7 +15,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "CZCropPreviewOverlayView.h"
 
-@interface CZCropPreviewOverlayView()
+@interface CZCropPreviewOverlayView ()
 
 @property(nonatomic,strong) UIView *bottomMaskView;
 @property(nonatomic,assign) CGSize cropOverlaySize;
