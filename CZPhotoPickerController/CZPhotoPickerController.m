@@ -364,13 +364,7 @@ typedef enum {
   // if they chose the photo, and didn't edit, push in a preview
 
   if (self.allowsEditing == NO && self.sourceType != UIImagePickerControllerSourceTypeCamera) {
-    CZPhotoPreviewViewController *vc = [[CZPhotoPreviewViewController alloc] initWithImage:image cropOverlaySize:self.cropOverlaySize chooseBlock:^{
-      UIImage *chosenImage = image;
-
-      if (CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO) {
-        chosenImage = [self cropImage:chosenImage];
-      }
-
+    CZPhotoPreviewViewController *vc = [[CZPhotoPreviewViewController alloc] initWithImage:image cropOverlaySize:self.cropOverlaySize chooseBlock:^(UIImage *chosenImage) {
       [self.popoverController dismissPopoverAnimated:YES];
 
       NSMutableDictionary *mutableImageInfo = [info mutableCopy];
