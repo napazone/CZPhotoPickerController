@@ -10,7 +10,14 @@ or returns the last photo taken.
 
 It supports the iPhone and iPad.
 
-Usage:
+Installation
+------------
+
+```ruby
+pod 'CZPhotoPickerController'
+```
+
+##Usage:
 
     __weak typeof(self) weakSelf = self;
 
