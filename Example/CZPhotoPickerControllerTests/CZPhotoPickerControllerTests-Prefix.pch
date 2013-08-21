@@ -8,6 +8,6 @@
     #import <SenTestingKit/SenTestingKit.h>
     #import "SHFastEnumerationProtocols.h"
     #import "SHTestCaseAdditions.h"
-    #import <KIF/KIF.h>
+    #import "KIF.h"
 
 #endif

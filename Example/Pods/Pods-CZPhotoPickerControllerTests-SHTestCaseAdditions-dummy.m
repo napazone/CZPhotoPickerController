@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_CZPhotoPickerControllerTests_SHTestCaseAdditions : NSObject
+@end
+@implementation PodsDummy_Pods_CZPhotoPickerControllerTests_SHTestCaseAdditions
+@end
