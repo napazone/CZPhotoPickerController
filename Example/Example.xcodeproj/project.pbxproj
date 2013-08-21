@@ -11,7 +11,7 @@
 		223BA7E617C54B9D0048B378 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58892616CB3BF900861AA5 /* UIKit.framework */; };
 		223BA7E717C54B9D0048B378 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58892816CB3BF900861AA5 /* Foundation.framework */; };
 		223BA7ED17C54B9D0048B378 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 223BA7EB17C54B9D0048B378 /* InfoPlist.strings */; };
-		223BA7F017C54B9D0048B378 /* CZPhotoPickerControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 223BA7EF17C54B9D0048B378 /* CZPhotoPickerControllerTests.m */; };
+		223BA7F017C54B9D0048B378 /* CZIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 223BA7EF17C54B9D0048B378 /* CZIntegrationTests.m */; };
 		4555987D827F480985471787 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2350730DA7046A1AAB35CDD /* libPods.a */; };
 		5C58892716CB3BF900861AA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58892616CB3BF900861AA5 /* UIKit.framework */; };
 		5C58892916CB3BF900861AA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58892816CB3BF900861AA5 /* Foundation.framework */; };
@@ -45,8 +45,7 @@
 		223BA7E417C54B9D0048B378 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		223BA7EA17C54B9D0048B378 /* CZPhotoPickerControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CZPhotoPickerControllerTests-Info.plist"; sourceTree = "<group>"; };
 		223BA7EC17C54B9D0048B378 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		223BA7EE17C54B9D0048B378 /* CZPhotoPickerControllerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CZPhotoPickerControllerTests.h; sourceTree = "<group>"; };
-		223BA7EF17C54B9D0048B378 /* CZPhotoPickerControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CZPhotoPickerControllerTests.m; sourceTree = "<group>"; };
+		223BA7EF17C54B9D0048B378 /* CZIntegrationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CZIntegrationTests.m; sourceTree = "<group>"; };
 		223BA7F117C54B9D0048B378 /* CZPhotoPickerControllerTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CZPhotoPickerControllerTests-Prefix.pch"; sourceTree = "<group>"; };
 		2C8D0044571A4A9EA407E95A /* libPods-CZPhotoPickerControllerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CZPhotoPickerControllerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C58892316CB3BF900861AA5 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,8 +103,7 @@
 		223BA7E817C54B9D0048B378 /* CZPhotoPickerControllerTests */ = {
 			isa = PBXGroup;
 			children = (
-				223BA7EE17C54B9D0048B378 /* CZPhotoPickerControllerTests.h */,
-				223BA7EF17C54B9D0048B378 /* CZPhotoPickerControllerTests.m */,
+				223BA7EF17C54B9D0048B378 /* CZIntegrationTests.m */,
 				223BA7E917C54B9D0048B378 /* Supporting Files */,
 			);
 			path = CZPhotoPickerControllerTests;
@@ -362,7 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				223BA7F017C54B9D0048B378 /* CZPhotoPickerControllerTests.m in Sources */,
+				223BA7F017C54B9D0048B378 /* CZIntegrationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

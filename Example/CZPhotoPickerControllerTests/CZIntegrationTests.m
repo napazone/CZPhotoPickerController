@@ -6,7 +6,10 @@
 //  Copyright (c) 2013 Care Zone, Inc. All rights reserved.
 //
 
-#import "CZPhotoPickerControllerTests.h"
+@interface CZPhotoPickerControllerTests : KIFTestCase
+
+@end
+
 
 @implementation CZPhotoPickerControllerTests
 
@@ -18,6 +21,11 @@
 - (void)tearDown
 {
     [super tearDown];
+}
+
+- (void)testWait
+{
+    [tester waitForTimeInterval:5];
 }
 
 
