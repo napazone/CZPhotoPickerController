@@ -426,7 +426,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 99C6A7E2BC9C432B89E5E54F /* Pods-CZPhotoPickerControllerTests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CZPhotoPickerController.app/CZPhotoPickerController";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -444,7 +444,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 99C6A7E2BC9C432B89E5E54F /* Pods-CZPhotoPickerControllerTests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CZPhotoPickerController.app/CZPhotoPickerController";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
