@@ -1,4 +1,5 @@
+#include "Pods-CZPhotoPickerController.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/CZPhotoPickerController"
-OTHER_LDFLAGS = -ObjC -framework AssetsLibrary -framework MobileCoreServices
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/CZPhotoPickerController" "${PODS_ROOT}/Headers/KIF-next" "${PODS_ROOT}/Headers/SHFastEnumerationProtocols" "${PODS_ROOT}/Headers/SHTestCaseAdditions"
+OTHER_LDFLAGS = -ObjC ${PODS_CZPHOTOPICKERCONTROLLER_OTHER_LDFLAGS}
 PODS_ROOT = ${SRCROOT}/Pods

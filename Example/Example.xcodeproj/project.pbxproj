@@ -27,6 +27,7 @@
 		5C58894616CB3BFA00861AA5 /* CZViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C58894416CB3BFA00861AA5 /* CZViewController_iPad.xib */; };
 		5C58895616CB3D6800861AA5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58895516CB3D6800861AA5 /* AssetsLibrary.framework */; };
 		5C58895816CB3D9000861AA5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58895716CB3D9000861AA5 /* MobileCoreServices.framework */; };
+		95A462C7B4764B0C92E0A8B5 /* libPods-CZPhotoPickerControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8D0044571A4A9EA407E95A /* libPods-CZPhotoPickerControllerTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		223BA7EE17C54B9D0048B378 /* CZPhotoPickerControllerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CZPhotoPickerControllerTests.h; sourceTree = "<group>"; };
 		223BA7EF17C54B9D0048B378 /* CZPhotoPickerControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CZPhotoPickerControllerTests.m; sourceTree = "<group>"; };
 		223BA7F117C54B9D0048B378 /* CZPhotoPickerControllerTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CZPhotoPickerControllerTests-Prefix.pch"; sourceTree = "<group>"; };
+		2C8D0044571A4A9EA407E95A /* libPods-CZPhotoPickerControllerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CZPhotoPickerControllerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C58892316CB3BF900861AA5 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C58892616CB3BF900861AA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5C58892816CB3BF900861AA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -66,6 +68,7 @@
 		5C58894516CB3BFA00861AA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CZViewController_iPad.xib; sourceTree = "<group>"; };
 		5C58895516CB3D6800861AA5 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5C58895716CB3D9000861AA5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		99C6A7E2BC9C432B89E5E54F /* Pods-CZPhotoPickerControllerTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CZPhotoPickerControllerTests.xcconfig"; path = "Pods/Pods-CZPhotoPickerControllerTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		C997CEC0BC5E409D9E6A5D88 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		E2350730DA7046A1AAB35CDD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -78,6 +81,7 @@
 				223BA7E517C54B9D0048B378 /* SenTestingKit.framework in Frameworks */,
 				223BA7E617C54B9D0048B378 /* UIKit.framework in Frameworks */,
 				223BA7E717C54B9D0048B378 /* Foundation.framework in Frameworks */,
+				95A462C7B4764B0C92E0A8B5 /* libPods-CZPhotoPickerControllerTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +129,7 @@
 				5C58892516CB3BF900861AA5 /* Frameworks */,
 				5C58892416CB3BF900861AA5 /* Products */,
 				C997CEC0BC5E409D9E6A5D88 /* Pods.xcconfig */,
+				99C6A7E2BC9C432B89E5E54F /* Pods-CZPhotoPickerControllerTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,6 +152,7 @@
 				5C58892616CB3BF900861AA5 /* UIKit.framework */,
 				E2350730DA7046A1AAB35CDD /* libPods.a */,
 				223BA7E417C54B9D0048B378 /* SenTestingKit.framework */,
+				2C8D0044571A4A9EA407E95A /* libPods-CZPhotoPickerControllerTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -186,10 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 223BA7F417C54B9D0048B378 /* Build configuration list for PBXNativeTarget "CZPhotoPickerControllerTests" */;
 			buildPhases = (
+				298F358E844743C595E3EF08 /* Check Pods Manifest.lock */,
 				223BA7DE17C54B9D0048B378 /* Sources */,
 				223BA7DF17C54B9D0048B378 /* Frameworks */,
 				223BA7E017C54B9D0048B378 /* Resources */,
 				223BA7E117C54B9D0048B378 /* ShellScript */,
+				E8204B03689648A88978C271 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,6 +295,21 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		298F358E844743C595E3EF08 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		5DB58A60A34F4DAB934C9332 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -315,6 +338,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8204B03689648A88978C271 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-CZPhotoPickerControllerTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -386,7 +424,9 @@
 /* Begin XCBuildConfiguration section */
 		223BA7F217C54B9D0048B378 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99C6A7E2BC9C432B89E5E54F /* Pods-CZPhotoPickerControllerTests.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CZPhotoPickerController.app/CZPhotoPickerController";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -395,13 +435,16 @@
 				GCC_PREFIX_HEADER = "CZPhotoPickerControllerTests/CZPhotoPickerControllerTests-Prefix.pch";
 				INFOPLIST_FILE = "CZPhotoPickerControllerTests/CZPhotoPickerControllerTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
 		223BA7F317C54B9D0048B378 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99C6A7E2BC9C432B89E5E54F /* Pods-CZPhotoPickerControllerTests.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CZPhotoPickerController.app/CZPhotoPickerController";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -410,6 +453,7 @@
 				GCC_PREFIX_HEADER = "CZPhotoPickerControllerTests/CZPhotoPickerControllerTests-Prefix.pch";
 				INFOPLIST_FILE = "CZPhotoPickerControllerTests/CZPhotoPickerControllerTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -509,6 +553,7 @@
 				223BA7F317C54B9D0048B378 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5C58891E16CB3BF900861AA5 /* Build configuration list for PBXProject "Example" */ = {
 			isa = XCConfigurationList;
