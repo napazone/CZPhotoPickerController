@@ -1,0 +1,14 @@
+PODS:
+  - CZPhotoPickerController (1.2)
+
+DEPENDENCIES:
+  - CZPhotoPickerController (from `../`)
+
+EXTERNAL SOURCES:
+  CZPhotoPickerController:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CZPhotoPickerController: 316c19a9ca6dd6dc19f450f48fe64164c90aaf5a
+
+COCOAPODS: 0.23.0
