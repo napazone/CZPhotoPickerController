@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CZPhotoPickerController: 316c19a9ca6dd6dc19f450f48fe64164c90aaf5a
+  CZPhotoPickerController: 357aece43d62671fcad4267b014f77a75984fe32
   KIF-next: 1c59f919ceee5999373c875832101c2fb48b5f59
   SHFastEnumerationProtocols: b83587ae41c1990851bcd675da01636a1b2addc8
   SHTestCaseAdditions: 0c64108c62ba04b01cb7d237a4cf6acf1176af45
 
-COCOAPODS: 0.22.0
+COCOAPODS: 0.23.0

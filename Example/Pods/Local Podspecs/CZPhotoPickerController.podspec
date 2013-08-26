@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '5.0'
   s.frameworks   = 'AssetsLibrary', 'MobileCoreServices'
   s.source_files = 'CZPhotoPickerController'
-  s.resources    = 'CZPhotoPickerController/CZPhotoPreviewViewController.xib'
+  #s.resources    = 'CZPhotoPickerController/CZPhotoPreviewViewController.xib'
   s.requires_arc = true
 end

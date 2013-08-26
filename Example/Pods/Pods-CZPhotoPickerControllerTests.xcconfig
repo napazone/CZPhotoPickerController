@@ -1,9 +1,5 @@
-#include "Pods-CZPhotoPickerControllerTests-CZPhotoPickerController.xcconfig"
-#include "Pods-CZPhotoPickerControllerTests-KIF-next.xcconfig"
-#include "Pods-CZPhotoPickerControllerTests-SHFastEnumerationProtocols.xcconfig"
-#include "Pods-CZPhotoPickerControllerTests-SHTestCaseAdditions.xcconfig"
-FRAMEWORK_SEARCH_PATHS =  ${PODS_CZPHOTOPICKERCONTROLLERTESTS_KIF_NEXT_FRAMEWORK_SEARCH_PATHS} ${PODS_CZPHOTOPICKERCONTROLLERTESTS_SHTESTCASEADDITIONS_FRAMEWORK_SEARCH_PATHS}
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$(SDKROOT)/Developer/Library/Frameworks" "$(DEVELOPER_LIBRARY_DIR)/Frameworks"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/CZPhotoPickerController" "${PODS_ROOT}/Headers/KIF-next" "${PODS_ROOT}/Headers/SHFastEnumerationProtocols" "${PODS_ROOT}/Headers/SHTestCaseAdditions"
-OTHER_LDFLAGS = -ObjC ${PODS_CZPHOTOPICKERCONTROLLERTESTS_CZPHOTOPICKERCONTROLLER_OTHER_LDFLAGS} ${PODS_CZPHOTOPICKERCONTROLLERTESTS_KIF_NEXT_OTHER_LDFLAGS} ${PODS_CZPHOTOPICKERCONTROLLERTESTS_SHTESTCASEADDITIONS_OTHER_LDFLAGS}
+OTHER_LDFLAGS = -ObjC -framework AssetsLibrary -framework CoreGraphics -framework MobileCoreServices -framework SenTestingKit
 PODS_ROOT = ${SRCROOT}/Pods
