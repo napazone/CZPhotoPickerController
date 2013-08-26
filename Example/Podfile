@@ -1,0 +1,9 @@
+platform :ios, "6.0"
+
+pod 'CZPhotoPickerController', :path => "../"
+
+target :CZPhotoPickerControllerTests do
+  pod 'SHFastEnumerationProtocols'
+  pod 'SHTestCaseAdditions'
+  pod 'KIF-next'
+end

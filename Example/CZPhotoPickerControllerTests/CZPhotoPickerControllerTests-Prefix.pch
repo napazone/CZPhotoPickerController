@@ -1,0 +1,13 @@
+//
+// Prefix header for all source files of the 'CZPhotoPickerControllerTests' target in the 'CZPhotoPickerControllerTests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <SenTestingKit/SenTestingKit.h>
+    #import "SHFastEnumerationProtocols.h"
+    #import "SHTestCaseAdditions.h"
+    #import "KIF.h"
+
+#endif
