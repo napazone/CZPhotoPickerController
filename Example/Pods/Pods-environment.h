@@ -10,5 +10,5 @@
 #define COCOAPODS_POD_AVAILABLE_CZPhotoPickerController
 #define COCOAPODS_VERSION_MAJOR_CZPhotoPickerController 1
 #define COCOAPODS_VERSION_MINOR_CZPhotoPickerController 2
-#define COCOAPODS_VERSION_PATCH_CZPhotoPickerController 0
+#define COCOAPODS_VERSION_PATCH_CZPhotoPickerController 1
 

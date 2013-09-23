@@ -18,6 +18,9 @@ typedef void (^SHTestCaseBlock)(BOOL *didFinish);
 
 #pragma mark -
 #pragma mark Helpers
+-(void)SH_waitForTimeInterval:(NSTimeInterval)theTimeInterval;
+
+
 -(void)SH_runLoopUntilTestPassesWithBlock:(SHTestCaseConditional)theBlock
                               withTimeOut:(NSTimeInterval)theTimeout;
 
