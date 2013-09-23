@@ -324,6 +324,8 @@ typedef enum {
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+  actionSheet.delegate = nil;
+
   if (buttonIndex == actionSheet.cancelButtonIndex) {
     self.completionBlock(nil, nil);
     return;
