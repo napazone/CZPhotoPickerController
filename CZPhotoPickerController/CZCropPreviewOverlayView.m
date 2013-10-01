@@ -35,13 +35,9 @@
   if (self) {
     self.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
     self.cropOverlaySize = cropOverlaySize;
-    self.userInteractionEnabled = NO;
 
     self.topMaskView = [[UIView alloc] initWithFrame:CGRectZero];
     self.bottomMaskView = [[UIView alloc] initWithFrame:CGRectZero];
-
-    self.topMaskView.userInteractionEnabled = NO;
-    self.bottomMaskView.userInteractionEnabled = NO;
 
     [self addSubview:self.topMaskView];
     [self addSubview:self.bottomMaskView];
@@ -61,6 +57,13 @@
 }
 
 #pragma mark - UIView
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+  // Has the side effect of disabling zoom when taking a picture, but
+  // fixes issues related to passing touches through to camera controls
+  return nil;
+}
 
 - (void)layoutSubviews
 {

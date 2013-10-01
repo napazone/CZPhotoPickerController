@@ -61,6 +61,13 @@ typedef enum {
   return YES;
 }
 
++ (BOOL)isOS7
+{
+  NSString *version = [UIDevice currentDevice].systemVersion;
+  NSComparisonResult result = [@"7.0" compare : version options : NSNumericSearch];
+  return (result == NSOrderedSame || result == NSOrderedAscending);
+}
+
 #pragma mark - Lifecycle
 
 - (void)dealloc
@@ -280,8 +287,16 @@ typedef enum {
   if (sourceType == UIImagePickerControllerSourceTypeCamera && CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO) {
     CGRect overlayFrame = mediaUI.view.frame;
 
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
-      if (CGRectGetHeight(UIScreen.mainScreen.bounds) > 480) {
+    BOOL isPhone = (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone);
+    BOOL isTallPhone = (isPhone && CGRectGetHeight(UIScreen.mainScreen.bounds) > 480);
+
+    if ([CZPhotoPickerController isOS7]) {
+      if (isTallPhone) {
+        overlayFrame = UIEdgeInsetsInsetRect(overlayFrame, UIEdgeInsetsMake(68, 0, 72, 0));
+      }
+    }
+    else if (isPhone) {
+      if (isTallPhone) {
         overlayFrame.size.height -= 96;
       }
       else {
@@ -290,18 +305,7 @@ typedef enum {
     }
 
     CZCropPreviewOverlayView *overlayView = [[CZCropPreviewOverlayView alloc] initWithFrame:overlayFrame cropOverlaySize:self.cropOverlaySize];
-
-    // `cameraOverlayView` docs say this is nil by default, but in practice it's non-nil.
-    // Adding as a subview keeps pinch-to-zoom on the camera. Setting the property
-    // loses pinch-to-zoom. Handling nil here just to be safe.
-
-    if (mediaUI.cameraOverlayView) {
-      mediaUI.cameraOverlayView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-      [mediaUI.cameraOverlayView addSubview:overlayView];
-    }
-    else {
-      mediaUI.cameraOverlayView = overlayView;
-    }
+    mediaUI.cameraOverlayView = overlayView;
   }
 
   if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) && (sourceType == UIImagePickerControllerSourceTypePhotoLibrary)) {

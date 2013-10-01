@@ -14,6 +14,7 @@
 
 #import "CZPhotoPreviewViewController.h"
 #import "CZCroppingScrollView.h"
+#import "CZPhotoPickerController.h"
 
 @interface CZPhotoPreviewViewController ()
 
