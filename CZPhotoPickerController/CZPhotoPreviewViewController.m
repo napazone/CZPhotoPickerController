@@ -14,11 +14,14 @@
 
 #import "CZPhotoPreviewViewController.h"
 #import "CZCroppingScrollView.h"
+#import "CZPhotoPickerController.h"
 
 @interface CZPhotoPreviewViewController ()
 
 @property(nonatomic,copy) dispatch_block_t cancelBlock;
+@property(nonatomic,retain) IBOutlet UIBarButtonItem *cancelButton;
 @property(nonatomic,copy) void (^chooseBlock)(UIImage *image);
+@property(nonatomic,retain) IBOutlet UIBarButtonItem *chooseButton;
 @property(nonatomic,assign) CGSize cropOverlaySize;
 @property(nonatomic,strong) UIImage *image;
 @property(nonatomic,weak) IBOutlet UILabel *previewLabel;
@@ -79,6 +82,12 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+
+#if __IPHONE_7_0
+  self.cancelButton.tintColor = [UIColor whiteColor];
+  self.chooseButton.tintColor = [UIColor whiteColor];
+  self.previewLabel.hidden = YES;
+#endif
 
   // No toolbar on iPad, use the nav bar. Mimic how Mail.app’s picker works
 
