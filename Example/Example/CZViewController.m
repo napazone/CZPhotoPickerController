@@ -66,6 +66,11 @@
   [self.pickPhotoController showFromBarButtonItem:sender];
 }
 
+- (IBAction)toggleCropPreviewSwitch:(id)sender
+{
+  [self.cropPreviewSwitch setOn:!self.cropPreviewSwitch.on animated:YES];
+}
+
 #pragma mark - UIViewController
 
 - (void)viewDidLoad
@@ -73,10 +78,6 @@
   [super viewDidLoad];
 
   self.imageView.clipsToBounds = YES;
-
-  self.imageView.layer.borderWidth = 1.0;
-  self.imageView.layer.borderColor = [UIColor blackColor].CGColor;
-  self.imageView.layer.cornerRadius = 5.0;
 }
 
 @end
