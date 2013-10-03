@@ -19,6 +19,8 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
 
 @interface CZPhotoPickerController : NSObject
 
++ (BOOL)isOS7;
+
 /**
  Defaults to NO. Is passed to the UIImagePickerController
  */
