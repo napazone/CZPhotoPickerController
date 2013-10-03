@@ -15,6 +15,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "CZPhotoPickerController.h"
+#import "CZCropPreviewOverlayView.h"
 #import "CZPhotoPreviewViewController.h"
 
 
@@ -72,8 +73,10 @@ typedef enum {
   self = [super init];
 
   if (self) {
-    self.showFromViewController = aViewController;
     self.completionBlock = completionBlock;
+    self.offerLastTaken = YES;
+    self.saveToCameraRoll = YES;
+    self.showFromViewController = aViewController;
     [self observeApplicationDidEnterBackgroundNotification];
   }
 
@@ -116,6 +119,34 @@ typedef enum {
     default:
       return nil;
   }
+}
+
+- (UIImage *)cropImage:(UIImage *)image
+{
+  CGFloat resizeScale = (image.size.width / self.cropOverlaySize.width);
+
+  CGSize size = image.size;
+  CGSize cropSize = CGSizeMake(self.cropOverlaySize.width * resizeScale, self.cropOverlaySize.height * resizeScale);
+
+  CGFloat scalex = cropSize.width / size.width;
+  CGFloat scaley = cropSize.height / size.height;
+  CGFloat scale = MAX(scalex, scaley);
+
+  UIGraphicsBeginImageContext(cropSize);
+
+  CGFloat width = size.width * scale;
+  CGFloat height = size.height * scale;
+
+  CGFloat originX = ((cropSize.width - width) / 2.0f);
+  CGFloat originY = ((cropSize.height - height) / 2.0f);
+
+  CGRect rect = CGRectMake(originX, originY, size.width * scale, size.height * scale);
+  [image drawInRect:rect];
+
+  UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+
+  return newImage;
 }
 
 - (void)dismissAnimated:(BOOL)animated
@@ -185,7 +216,7 @@ typedef enum {
     [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
   }
   else {
-    [self getLastPhotoTakenWithCompletionBlock:^(UIImage *lastPhoto) {
+    void (^showActionSheetBlock)(UIImage *) = ^(UIImage *lastPhoto) {
 
       self.lastPhoto = lastPhoto;
 
@@ -207,7 +238,14 @@ typedef enum {
       else {
         [sheet showFromRect:self.showFromRect inView:self.showFromViewController.view animated:YES];
       }
-    }];
+    };
+
+    if (self.offerLastTaken) {
+      [self getLastPhotoTakenWithCompletionBlock:showActionSheetBlock];
+    }
+    else {
+      showActionSheetBlock(nil);
+    }
   }
 }
 
@@ -239,6 +277,33 @@ typedef enum {
   mediaUI.mediaTypes = @[ (NSString *)kUTTypeImage ];
   mediaUI.sourceType = sourceType;
 
+  if (sourceType == UIImagePickerControllerSourceTypeCamera && CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO) {
+    CGRect overlayFrame = mediaUI.view.frame;
+
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+      if (CGRectGetHeight(UIScreen.mainScreen.bounds) > 480) {
+        overlayFrame.size.height -= 96;
+      }
+      else {
+        overlayFrame.size.height -= 54;
+      }
+    }
+
+    CZCropPreviewOverlayView *overlayView = [[CZCropPreviewOverlayView alloc] initWithFrame:overlayFrame cropOverlaySize:self.cropOverlaySize];
+
+    // `cameraOverlayView` docs say this is nil by default, but in practice it's non-nil.
+    // Adding as a subview keeps pinch-to-zoom on the camera. Setting the property
+    // loses pinch-to-zoom. Handling nil here just to be safe.
+
+    if (mediaUI.cameraOverlayView) {
+      mediaUI.cameraOverlayView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+      [mediaUI.cameraOverlayView addSubview:overlayView];
+    }
+    else {
+      mediaUI.cameraOverlayView = overlayView;
+    }
+  }
+
   if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) && (sourceType == UIImagePickerControllerSourceTypePhotoLibrary)) {
     self.popoverController = [self makePopoverController:mediaUI];
     self.popoverController.delegate = self;
@@ -259,6 +324,8 @@ typedef enum {
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+  actionSheet.delegate = nil;
+
   if (buttonIndex == actionSheet.cancelButtonIndex) {
     self.completionBlock(nil, nil);
     return;
@@ -292,7 +359,7 @@ typedef enum {
 {
   UIImage *image = info[(self.allowsEditing ? UIImagePickerControllerEditedImage : UIImagePickerControllerOriginalImage)];
 
-  if (self.sourceType == UIImagePickerControllerSourceTypeCamera) {
+  if (self.sourceType == UIImagePickerControllerSourceTypeCamera && self.saveToCameraRoll) {
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
   }
 
@@ -301,8 +368,10 @@ typedef enum {
   if (self.allowsEditing == NO && self.sourceType != UIImagePickerControllerSourceTypeCamera) {
     CZPhotoPreviewViewController *vc = [[CZPhotoPreviewViewController alloc] initWithImage:image cropOverlaySize:self.cropOverlaySize chooseBlock:^(UIImage *chosenImage) {
       [self.popoverController dismissPopoverAnimated:YES];
+
       NSMutableDictionary *mutableImageInfo = [info mutableCopy];
       mutableImageInfo[UIImagePickerControllerEditedImage] = chosenImage;
+
       self.completionBlock(picker, [mutableImageInfo copy]);
     } cancelBlock:^{
       [picker popViewControllerAnimated:YES];
@@ -311,8 +380,15 @@ typedef enum {
     [picker pushViewController:vc animated:YES];
   }
   else {
+    NSMutableDictionary *mutableImageInfo = [info mutableCopy];
+
+    if (CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO) {
+      mutableImageInfo[UIImagePickerControllerEditedImage] = [self cropImage:image];
+    }
+
     [self.popoverController dismissPopoverAnimated:YES];
-    self.completionBlock(picker, info);
+
+    self.completionBlock(picker, mutableImageInfo);
   }
 }
 

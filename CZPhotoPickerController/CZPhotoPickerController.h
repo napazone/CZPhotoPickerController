@@ -20,22 +20,32 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
 @interface CZPhotoPickerController : NSObject
 
 /**
- Defaults to CGSizeZero. When set to a non-zero value, a crop
- overlay view will be displayed atop the selected image at the 
- provided size. 
- */
-@property(nonatomic,assign) CGSize cropOverlaySize;
-
-/**
  Defaults to NO. Is passed to the UIImagePickerController
  */
 @property(nonatomic,assign) BOOL allowsEditing;
+
+/**
+ Defaults to CGSizeZero. When set to a non-zero value, a crop
+ overlay view will be displayed atop the selected image at the
+ provided size.
+ */
+@property(nonatomic,assign) CGSize cropOverlaySize;
 
 /**
  Allow overriding of the UIPopoverController class used to host the
  UIImagePickerController. Defaults to UIPopoverController.
  */
 @property(nonatomic,copy) Class popoverControllerClass;
+
+/**
+ Defaults to YES.
+*/
+@property(nonatomic,assign) BOOL offerLastTaken;
+
+/**
+ Defaults to YES.
+*/
+@property(nonatomic,assign) BOOL saveToCameraRoll;
 
 /**
  @param completionBlock Called when a photo has been picked or cancelled (`imageInfoDict` will be nil if canceled). The `UIImagePickerController` has not been dismissed at the time of this being called.

@@ -10,11 +10,18 @@ or returns the last photo taken.
 
 It supports the iPhone and iPad.
 
-Usage:
+Installation
+------------
+
+```ruby
+pod 'CZPhotoPickerController'
+```
+
+##Usage:
 
     __weak typeof(self) weakSelf = self;
 
-    photoPicker = [[CZPhotoPickerController alloc] initWithPresentingViewController:self withCompletionBlock:^(UIImagePickerController *imagePickerController, NSDictionary *imageInfoDict) {
+    self.photoPicker = [[CZPhotoPickerController alloc] initWithPresentingViewController:self withCompletionBlock:^(UIImagePickerController *imagePickerController, NSDictionary *imageInfoDict) {
 
       if (imagePickerController.allowsEditing) {
         weakSelf.imageView.image = imageInfoDict[UIImagePickerControllerEditedImage];
