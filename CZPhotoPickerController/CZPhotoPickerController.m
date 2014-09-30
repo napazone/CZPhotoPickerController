@@ -312,15 +312,22 @@ typedef enum {
     self.popoverController = [self makePopoverController:mediaUI];
     self.popoverController.delegate = self;
 
-    if (self.showFromBarButtonItem) {
-      [self.popoverController presentPopoverFromBarButtonItem:self.showFromBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    }
-    else {
-      [self.popoverController presentPopoverFromRect:self.showFromRect inView:self.showFromViewController.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    }
+    // Bug Workaround (as of iOS 8.0.2) :
+    // Presenting popover from popover does not work unless performed with a delay.
+    //
+    dispatch_async(dispatch_get_main_queue(), ^{
+      if (self.showFromBarButtonItem) {
+        [self.popoverController presentPopoverFromBarButtonItem:self.showFromBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+      }
+      else {
+        [self.popoverController presentPopoverFromRect:self.showFromRect inView:self.showFromViewController.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+      }
+    });
   }
   else {
-    [self.showFromViewController presentViewController:mediaUI animated:YES completion:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{ // ditto. see comment above
+      [self.showFromViewController presentViewController:mediaUI animated:YES completion:nil];
+    });
   }
 }
 
