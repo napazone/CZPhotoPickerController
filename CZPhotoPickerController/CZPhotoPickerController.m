@@ -61,11 +61,9 @@ typedef enum {
   return YES;
 }
 
-+ (BOOL)isOS7
++ (BOOL)isOS7OrHigher
 {
-  NSString *version = [UIDevice currentDevice].systemVersion;
-  NSComparisonResult result = [@"7.0" compare : version options : NSNumericSearch];
-  return (result == NSOrderedSame || result == NSOrderedAscending);
+  return ([UIDevice currentDevice].systemVersion.floatValue >= 7.0);
 }
 
 #pragma mark - Lifecycle
@@ -290,7 +288,7 @@ typedef enum {
     BOOL isPhone = (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone);
     BOOL isTallPhone = (isPhone && CGRectGetHeight(UIScreen.mainScreen.bounds) > 480);
 
-    if ([CZPhotoPickerController isOS7]) {
+    if ([CZPhotoPickerController isOS7OrHigher]) {
       if (isTallPhone) {
         overlayFrame = UIEdgeInsetsInsetRect(overlayFrame, UIEdgeInsetsMake(68, 0, 72, 0));
       }
