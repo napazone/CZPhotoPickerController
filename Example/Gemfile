@@ -1,5 +1,9 @@
+source 'https://rubygems.org'
+
 group :development do
+  gem 'cocoapods'
   gem 'guard'
   gem 'terminal-notifier-guard'
   gem 'guard-xctool-test'
 end
+

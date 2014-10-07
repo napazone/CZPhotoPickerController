@@ -5,9 +5,5 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-    #import <SenTestingKit/SenTestingKit.h>
-    #import "SHFastEnumerationProtocols.h"
-    #import "SHTestCaseAdditions.h"
-    #import "KIF.h"
-
+    #import <XCTest/XCTest.h>
 #endif

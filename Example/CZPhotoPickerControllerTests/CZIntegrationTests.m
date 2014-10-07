@@ -6,27 +6,16 @@
 //  Copyright (c) 2013 Care Zone, Inc. All rights reserved.
 //
 
-@interface CZPhotoPickerControllerTests : KIFTestCase
+@interface CZPhotoPickerControllerTests : XCTestCase
 
 @end
 
 
 @implementation CZPhotoPickerControllerTests
 
-- (void)setUp
+- (void)testItBuilds
 {
-    [super setUp];
+  XCTAssertTrue(YES, @"It builds");
 }
-
-- (void)tearDown
-{
-    [super tearDown];
-}
-
-- (void)testWait
-{
-    [tester waitForTimeInterval:5];
-}
-
 
 @end
