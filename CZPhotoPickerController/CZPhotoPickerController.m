@@ -12,10 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+@import AVFoundation;
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "CZPhotoPickerController.h"
 #import "CZCropPreviewOverlayView.h"
+#import "CZPhotoPickerPermissionAlert.h"
 #import "CZPhotoPreviewViewController.h"
 
 
@@ -64,6 +66,11 @@ typedef enum {
 + (BOOL)isOS7OrHigher
 {
   return ([UIDevice currentDevice].systemVersion.floatValue >= 7.0);
+}
+
++ (BOOL)isOS8OrHigher
+{
+  return ([UIDevice currentDevice].systemVersion.floatValue >= 8.0);
 }
 
 #pragma mark - Lifecycle
@@ -274,6 +281,22 @@ typedef enum {
 
 - (void)showImagePickerWithSourceType:(UIImagePickerControllerSourceType)sourceType
 {
+  if (sourceType == UIImagePickerControllerSourceTypeCamera) {
+    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    switch (status) {
+      case AVAuthorizationStatusAuthorized:
+      case AVAuthorizationStatusNotDetermined:
+        // Show UIImagePickerController; it will ask for permission if the status
+        // is not determined.
+        break;
+
+      case AVAuthorizationStatusDenied:
+      case AVAuthorizationStatusRestricted:
+        [[CZPhotoPickerPermissionAlert sharedInstance] showAlert];
+        break;
+    }
+  }
+
   self.sourceType = sourceType;
 
   UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];

@@ -7,90 +7,94 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0329A794C8EAAAAB0A4494C2 /* CZPhotoPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AE86912DC84F0FA500D880 /* CZPhotoPreviewViewController.xib */; };
-		085598764D38277EBF265105 /* Pods-CZPhotoPickerController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC821BACE3D32B4C41527141 /* Pods-CZPhotoPickerController-dummy.m */; };
-		2179CF3651A945644C73F143 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8863FF3D7D336535FE91EE /* AssetsLibrary.framework */; };
-		2B3B27EEE7475046392EBA79 /* CZCroppingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = FF3690428AE64301EB1DDC28 /* CZCroppingScrollView.h */; };
-		602DA123043D650897395FFF /* CZCroppingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D44B65CB644AA2429275BD8C /* CZCroppingScrollView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		723A9FFF39E259AF4AE6C33D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636F60DEF53775723799304C /* MobileCoreServices.framework */; };
-		78E7D3735C017275C28D7AE2 /* CZPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C40B0647DB2BA7493DD7177 /* CZPhotoPickerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		82A01A25628719C7049B5D76 /* CZPhotoPickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = DEF097756038A768E7D92511 /* CZPhotoPickerController.h */; };
-		8FF8297E415B3CBA2E1BB47A /* CZCropPreviewOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22D7B97BDA38AF204DD94829 /* CZCropPreviewOverlayView.h */; };
-		93198D477C09C86C1C110365 /* CZPhotoPreviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 466CC35129446439085BFE48 /* CZPhotoPreviewViewController.h */; };
-		9685B04F6F6D159651120B47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF1D6B7D4E8AE769DCF68C /* Foundation.framework */; };
-		ADB08DC904DB89400BBC529F /* CZCropPreviewOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B12753B844687D8C9A98D6F /* CZCropPreviewOverlayView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		BAB20CE43F4A93CAD2557198 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF1D6B7D4E8AE769DCF68C /* Foundation.framework */; };
-		C6293CEB78F444454AF7F4BD /* CZPhotoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22486E310A62102F048E2648 /* CZPhotoPreviewViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		DD3123BED723081146EFB1C0 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DF12BC885B0B22BC28825CC1 /* Pods-dummy.m */; };
+		01FEE0B21B470C61A60446BB /* CZPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E10A8FA311AB49C6F75E4F /* CZPhotoPickerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		2B049388F59D3C9BC72E8066 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE05A972A31CA90E25D2B55 /* MobileCoreServices.framework */; };
+		3DC451996BA87D307DFAC22A /* CZCropPreviewOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9722A45AF2C87EEF152D47 /* CZCropPreviewOverlayView.h */; };
+		56162AA952D2652A77830656 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8C3F03D986DC07F0E0D53E3 /* AssetsLibrary.framework */; };
+		6F79E5B011E9F8E218DB970B /* CZCroppingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 885ABAD7A785797433928C09 /* CZCroppingScrollView.h */; };
+		733946212B6E463D249B163B /* Pods-CZPhotoPickerController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CD2DA4A3C44E03E6DAC6D0 /* Pods-CZPhotoPickerController-dummy.m */; };
+		749D3D15B34DD1DE6CDE06DA /* CZPhotoPickerPermissionAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 0355EBD2CFEEC504E100816C /* CZPhotoPickerPermissionAlert.h */; };
+		A8A09761F5183616D541EFB7 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F37174329EBB8200A936AA8E /* Pods-dummy.m */; };
+		AD4BE5833E04F0A3259E218B /* CZCroppingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E542E0849ADD064B8F342 /* CZCroppingScrollView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		AED729FFD274A4C846DD891A /* CZPhotoPreviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 41F94A4140F89567EC6F25BF /* CZPhotoPreviewViewController.h */; };
+		AF9177E662227FD11BD77AB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6BF0DF842C5C9C5D37185B1 /* Foundation.framework */; };
+		B1C30627C4A2DFBE4ABD87A3 /* CZPhotoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB7DB3A9861D8D68EE3A15 /* CZPhotoPreviewViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		CB0A93FDEA645E030BF8A513 /* CZPhotoPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 838BCDAAC054E60B64341963 /* CZPhotoPreviewViewController.xib */; };
+		CF8171B074B412EAE61EEE0F /* CZPhotoPickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 166D865BE81E7C8BC30D75B3 /* CZPhotoPickerController.h */; };
+		CFBCDE0F864C32D363F29FDC /* CZPhotoPickerPermissionAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E4623F444C7567451C6C7 /* CZPhotoPickerPermissionAlert.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		DDC96DC71E9F06F26B87C883 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6BF0DF842C5C9C5D37185B1 /* Foundation.framework */; };
+		F3E5C545E1E50E2AEE25D80F /* CZCropPreviewOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D7406F4F1107E1BCBF1F45 /* CZCropPreviewOverlayView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		562A21E898FD3CDC99FF2BE0 /* PBXContainerItemProxy */ = {
+		37C404FE71604E102898378C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A3845473046F1BC6C984072E /* Project object */;
+			containerPortal = 9D0D960F943263B06E8EE7D4 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1C6988A5E890CB3101B30C0F;
-			remoteInfo = "Pods-CZPhotoPickerController";
-		};
-		C74C55BB93EDD2FAAC282FEB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A3845473046F1BC6C984072E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DCE46D2240B9987A1A9B5C03;
+			remoteGlobalIDString = 3A034E71BA8225CECA68A62F;
 			remoteInfo = CZPhotoPickerController;
+		};
+		9DF6F847C5F761875E84F6C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9D0D960F943263B06E8EE7D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C27C5750D525749717B12400;
+			remoteInfo = "Pods-CZPhotoPickerController";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		003D1D14136C4759C63BA316 /* libPods-CZPhotoPickerController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CZPhotoPickerController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A376E35DAE6E61B702B8D05 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		22486E310A62102F048E2648 /* CZPhotoPreviewViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CZPhotoPreviewViewController.m; path = CZPhotoPickerController/CZPhotoPreviewViewController.m; sourceTree = "<group>"; };
-		22D7B97BDA38AF204DD94829 /* CZCropPreviewOverlayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CZCropPreviewOverlayView.h; path = CZPhotoPickerController/CZCropPreviewOverlayView.h; sourceTree = "<group>"; };
-		2889D44CF598FE622091FC46 /* Pods-CZPhotoPickerController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CZPhotoPickerController.xcconfig"; sourceTree = "<group>"; };
-		3C40B0647DB2BA7493DD7177 /* CZPhotoPickerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CZPhotoPickerController.m; path = CZPhotoPickerController/CZPhotoPickerController.m; sourceTree = "<group>"; };
-		466CC35129446439085BFE48 /* CZPhotoPreviewViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CZPhotoPreviewViewController.h; path = CZPhotoPickerController/CZPhotoPreviewViewController.h; sourceTree = "<group>"; };
-		636F60DEF53775723799304C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
-		63EF1D6B7D4E8AE769DCF68C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		8B12753B844687D8C9A98D6F /* CZCropPreviewOverlayView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CZCropPreviewOverlayView.m; path = CZPhotoPickerController/CZCropPreviewOverlayView.m; sourceTree = "<group>"; };
-		928BB10B9BC4C4588CE3444E /* Pods-CZPhotoPickerController-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CZPhotoPickerController-Private.xcconfig"; sourceTree = "<group>"; };
-		990936642CA7D2423B6FA774 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
-		A4AE86912DC84F0FA500D880 /* CZPhotoPreviewViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = CZPhotoPreviewViewController.xib; path = CZPhotoPickerController/CZPhotoPreviewViewController.xib; sourceTree = "<group>"; };
-		BC821BACE3D32B4C41527141 /* Pods-CZPhotoPickerController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CZPhotoPickerController-dummy.m"; sourceTree = "<group>"; };
-		BF8863FF3D7D336535FE91EE /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AssetsLibrary.framework; sourceTree = DEVELOPER_DIR; };
-		C1C70AA0B6055A025D20590F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		C740C79088C702D4FFECD22C /* Pods-CZPhotoPickerController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CZPhotoPickerController-prefix.pch"; sourceTree = "<group>"; };
-		CF6AE5693FDB80480D2E3264 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		CF8F4BD3DBBBAEDBD15FFE80 /* CZPhotoPickerController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CZPhotoPickerController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D44B65CB644AA2429275BD8C /* CZCroppingScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CZCroppingScrollView.m; path = CZPhotoPickerController/CZCroppingScrollView.m; sourceTree = "<group>"; };
-		D86096312A8A70580A9A9225 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D91C2C1CA16107EFC08D23DF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		DEF097756038A768E7D92511 /* CZPhotoPickerController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CZPhotoPickerController.h; path = CZPhotoPickerController/CZPhotoPickerController.h; sourceTree = "<group>"; };
-		DF12BC885B0B22BC28825CC1 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		FAC9569780ECB963A2224016 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		FC75052F917B7F008D8040EF /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		FF3690428AE64301EB1DDC28 /* CZCroppingScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CZCroppingScrollView.h; path = CZPhotoPickerController/CZCroppingScrollView.h; sourceTree = "<group>"; };
+		0355EBD2CFEEC504E100816C /* CZPhotoPickerPermissionAlert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CZPhotoPickerPermissionAlert.h; path = CZPhotoPickerController/CZPhotoPickerPermissionAlert.h; sourceTree = "<group>"; };
+		0FD48B0C1C980597FB13847A /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		166D865BE81E7C8BC30D75B3 /* CZPhotoPickerController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CZPhotoPickerController.h; path = CZPhotoPickerController/CZPhotoPickerController.h; sourceTree = "<group>"; };
+		22BEB7C02EBDFABC0D164F7D /* CZPhotoPickerController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CZPhotoPickerController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F1E4623F444C7567451C6C7 /* CZPhotoPickerPermissionAlert.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CZPhotoPickerPermissionAlert.m; path = CZPhotoPickerController/CZPhotoPickerPermissionAlert.m; sourceTree = "<group>"; };
+		38DA4219FF2A2CF9B2C7C24A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B9E542E0849ADD064B8F342 /* CZCroppingScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CZCroppingScrollView.m; path = CZPhotoPickerController/CZCroppingScrollView.m; sourceTree = "<group>"; };
+		3DBAADD28A59991136D6CD39 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		3FE05A972A31CA90E25D2B55 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		41F94A4140F89567EC6F25BF /* CZPhotoPreviewViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CZPhotoPreviewViewController.h; path = CZPhotoPickerController/CZPhotoPreviewViewController.h; sourceTree = "<group>"; };
+		47CD2DA4A3C44E03E6DAC6D0 /* Pods-CZPhotoPickerController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CZPhotoPickerController-dummy.m"; sourceTree = "<group>"; };
+		48D7406F4F1107E1BCBF1F45 /* CZCropPreviewOverlayView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CZCropPreviewOverlayView.m; path = CZPhotoPickerController/CZCropPreviewOverlayView.m; sourceTree = "<group>"; };
+		4ABB7DB3A9861D8D68EE3A15 /* CZPhotoPreviewViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CZPhotoPreviewViewController.m; path = CZPhotoPickerController/CZPhotoPreviewViewController.m; sourceTree = "<group>"; };
+		4DCAF40A36566402533D18BB /* Pods-CZPhotoPickerController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CZPhotoPickerController.xcconfig"; sourceTree = "<group>"; };
+		70B63793018A2B2C1B1636F6 /* Pods-CZPhotoPickerController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CZPhotoPickerController-prefix.pch"; sourceTree = "<group>"; };
+		79F4359E44FE70FCA0F4F289 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7B5078BA8995454BA391E7D1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		838BCDAAC054E60B64341963 /* CZPhotoPreviewViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = CZPhotoPreviewViewController.xib; path = CZPhotoPickerController/CZPhotoPreviewViewController.xib; sourceTree = "<group>"; };
+		885ABAD7A785797433928C09 /* CZCroppingScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CZCroppingScrollView.h; path = CZPhotoPickerController/CZCroppingScrollView.h; sourceTree = "<group>"; };
+		893A07E3EA4A5CD2EB40906F /* libPods-CZPhotoPickerController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CZPhotoPickerController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9375CDD7B935A1ABBEDC02B7 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		94E10A8FA311AB49C6F75E4F /* CZPhotoPickerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CZPhotoPickerController.m; path = CZPhotoPickerController/CZPhotoPickerController.m; sourceTree = "<group>"; };
+		B3A307F06C975E6BE7D6FA55 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CF9722A45AF2C87EEF152D47 /* CZCropPreviewOverlayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CZCropPreviewOverlayView.h; path = CZPhotoPickerController/CZCropPreviewOverlayView.h; sourceTree = "<group>"; };
+		EC7795648F8F1A46DF9FFEB1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		F37174329EBB8200A936AA8E /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		F6BF0DF842C5C9C5D37185B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		F8C3F03D986DC07F0E0D53E3 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AssetsLibrary.framework; sourceTree = DEVELOPER_DIR; };
+		FFE1284B482875F80D6FD14F /* Pods-CZPhotoPickerController-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CZPhotoPickerController-Private.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		48DBB43239CFC293139130DC /* Frameworks */ = {
+		5534E5E2EA21B221B4D0656C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2179CF3651A945644C73F143 /* AssetsLibrary.framework in Frameworks */,
-				BAB20CE43F4A93CAD2557198 /* Foundation.framework in Frameworks */,
-				723A9FFF39E259AF4AE6C33D /* MobileCoreServices.framework in Frameworks */,
+				AF9177E662227FD11BD77AB1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A0938C3DFB3E02F358D5830 /* Frameworks */ = {
+		794C6BB1072224A10C04387F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9685B04F6F6D159651120B47 /* Foundation.framework in Frameworks */,
+				56162AA952D2652A77830656 /* AssetsLibrary.framework in Frameworks */,
+				DDC96DC71E9F06F26B87C883 /* Foundation.framework in Frameworks */,
+				2B049388F59D3C9BC72E8066 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F689E68AFDF1E3FECC3B7632 /* Frameworks */ = {
+		D93FEA435F5562910A6A5790 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -100,173 +104,141 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18C72645FDA6F84E733E6ECD /* Support Files */ = {
+		337FE6E87ADF49C1CF4F6193 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2889D44CF598FE622091FC46 /* Pods-CZPhotoPickerController.xcconfig */,
-				928BB10B9BC4C4588CE3444E /* Pods-CZPhotoPickerController-Private.xcconfig */,
-				BC821BACE3D32B4C41527141 /* Pods-CZPhotoPickerController-dummy.m */,
-				C740C79088C702D4FFECD22C /* Pods-CZPhotoPickerController-prefix.pch */,
+				3B81EEC5C56174E51DAC875F /* CZPhotoPickerController */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		39039F1B07D062C7BBA8F048 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DCAF40A36566402533D18BB /* Pods-CZPhotoPickerController.xcconfig */,
+				FFE1284B482875F80D6FD14F /* Pods-CZPhotoPickerController-Private.xcconfig */,
+				47CD2DA4A3C44E03E6DAC6D0 /* Pods-CZPhotoPickerController-dummy.m */,
+				70B63793018A2B2C1B1636F6 /* Pods-CZPhotoPickerController-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/Pods-CZPhotoPickerController";
 			sourceTree = "<group>";
 		};
-		1D7C6BA46A38E297DDCB8950 /* Resources */ = {
+		3B81EEC5C56174E51DAC875F /* CZPhotoPickerController */ = {
 			isa = PBXGroup;
 			children = (
-				A4AE86912DC84F0FA500D880 /* CZPhotoPreviewViewController.xib */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		25E130338A96198AEF778A1E /* CZPhotoPickerController */ = {
-			isa = PBXGroup;
-			children = (
-				22D7B97BDA38AF204DD94829 /* CZCropPreviewOverlayView.h */,
-				8B12753B844687D8C9A98D6F /* CZCropPreviewOverlayView.m */,
-				FF3690428AE64301EB1DDC28 /* CZCroppingScrollView.h */,
-				D44B65CB644AA2429275BD8C /* CZCroppingScrollView.m */,
-				DEF097756038A768E7D92511 /* CZPhotoPickerController.h */,
-				3C40B0647DB2BA7493DD7177 /* CZPhotoPickerController.m */,
-				466CC35129446439085BFE48 /* CZPhotoPreviewViewController.h */,
-				22486E310A62102F048E2648 /* CZPhotoPreviewViewController.m */,
-				1D7C6BA46A38E297DDCB8950 /* Resources */,
-				18C72645FDA6F84E733E6ECD /* Support Files */,
+				CF9722A45AF2C87EEF152D47 /* CZCropPreviewOverlayView.h */,
+				48D7406F4F1107E1BCBF1F45 /* CZCropPreviewOverlayView.m */,
+				885ABAD7A785797433928C09 /* CZCroppingScrollView.h */,
+				3B9E542E0849ADD064B8F342 /* CZCroppingScrollView.m */,
+				166D865BE81E7C8BC30D75B3 /* CZPhotoPickerController.h */,
+				94E10A8FA311AB49C6F75E4F /* CZPhotoPickerController.m */,
+				0355EBD2CFEEC504E100816C /* CZPhotoPickerPermissionAlert.h */,
+				2F1E4623F444C7567451C6C7 /* CZPhotoPickerPermissionAlert.m */,
+				41F94A4140F89567EC6F25BF /* CZPhotoPreviewViewController.h */,
+				4ABB7DB3A9861D8D68EE3A15 /* CZPhotoPreviewViewController.m */,
+				3E4A689C26B41D725F2F74F8 /* Resources */,
+				39039F1B07D062C7BBA8F048 /* Support Files */,
 			);
 			name = CZPhotoPickerController;
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		29C2C2DED1E65027A512F778 /* Products */ = {
+		3CCDADD52DF5E6B9D65C3C5B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CF8F4BD3DBBBAEDBD15FFE80 /* CZPhotoPickerController.bundle */,
-				D86096312A8A70580A9A9225 /* libPods.a */,
-				003D1D14136C4759C63BA316 /* libPods-CZPhotoPickerController.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		4DB0CDC339838C7F5154B633 = {
-			isa = PBXGroup;
-			children = (
-				FAC9569780ECB963A2224016 /* Podfile */,
-				F296E037C17EB104ED602692 /* Development Pods */,
-				842E361F3FEDDF86EDE0A444 /* Frameworks */,
-				29C2C2DED1E65027A512F778 /* Products */,
-				9E8274B3EB44AC879F79A6A8 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		842E361F3FEDDF86EDE0A444 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E812E9023AD19673A0E058EB /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		87858F82099AF63290CB8E5C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1A376E35DAE6E61B702B8D05 /* Pods-acknowledgements.markdown */,
-				CF6AE5693FDB80480D2E3264 /* Pods-acknowledgements.plist */,
-				DF12BC885B0B22BC28825CC1 /* Pods-dummy.m */,
-				990936642CA7D2423B6FA774 /* Pods-environment.h */,
-				FC75052F917B7F008D8040EF /* Pods-resources.sh */,
-				D91C2C1CA16107EFC08D23DF /* Pods.debug.xcconfig */,
-				C1C70AA0B6055A025D20590F /* Pods.release.xcconfig */,
+				79F4359E44FE70FCA0F4F289 /* Pods-acknowledgements.markdown */,
+				9375CDD7B935A1ABBEDC02B7 /* Pods-acknowledgements.plist */,
+				F37174329EBB8200A936AA8E /* Pods-dummy.m */,
+				3DBAADD28A59991136D6CD39 /* Pods-environment.h */,
+				0FD48B0C1C980597FB13847A /* Pods-resources.sh */,
+				EC7795648F8F1A46DF9FFEB1 /* Pods.debug.xcconfig */,
+				7B5078BA8995454BA391E7D1 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			path = "Target Support Files/Pods";
 			sourceTree = "<group>";
 		};
-		9E8274B3EB44AC879F79A6A8 /* Targets Support Files */ = {
+		3E4A689C26B41D725F2F74F8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				87858F82099AF63290CB8E5C /* Pods */,
+				838BCDAAC054E60B64341963 /* CZPhotoPreviewViewController.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		43AAE48E992DB78C5BA002A9 = {
+			isa = PBXGroup;
+			children = (
+				B3A307F06C975E6BE7D6FA55 /* Podfile */,
+				337FE6E87ADF49C1CF4F6193 /* Development Pods */,
+				5D1AA3102AADFAE6467867D9 /* Frameworks */,
+				E753F86FBDCC2CFAE52C85A9 /* Products */,
+				976616E0C5D3ADDFDFBA99F5 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		5D1AA3102AADFAE6467867D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D723AB8C7D00EE11C8B10638 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		976616E0C5D3ADDFDFBA99F5 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3CCDADD52DF5E6B9D65C3C5B /* Pods */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		E812E9023AD19673A0E058EB /* iOS */ = {
+		D723AB8C7D00EE11C8B10638 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				BF8863FF3D7D336535FE91EE /* AssetsLibrary.framework */,
-				63EF1D6B7D4E8AE769DCF68C /* Foundation.framework */,
-				636F60DEF53775723799304C /* MobileCoreServices.framework */,
+				F8C3F03D986DC07F0E0D53E3 /* AssetsLibrary.framework */,
+				F6BF0DF842C5C9C5D37185B1 /* Foundation.framework */,
+				3FE05A972A31CA90E25D2B55 /* MobileCoreServices.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		F296E037C17EB104ED602692 /* Development Pods */ = {
+		E753F86FBDCC2CFAE52C85A9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				25E130338A96198AEF778A1E /* CZPhotoPickerController */,
+				22BEB7C02EBDFABC0D164F7D /* CZPhotoPickerController.bundle */,
+				38DA4219FF2A2CF9B2C7C24A /* libPods.a */,
+				893A07E3EA4A5CD2EB40906F /* libPods-CZPhotoPickerController.a */,
 			);
-			name = "Development Pods";
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		C8E3A5B36F5DA07E41AE4BCA /* Headers */ = {
+		4FE0EA92A0F1059CAC21F5D2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FF8297E415B3CBA2E1BB47A /* CZCropPreviewOverlayView.h in Headers */,
-				2B3B27EEE7475046392EBA79 /* CZCroppingScrollView.h in Headers */,
-				82A01A25628719C7049B5D76 /* CZPhotoPickerController.h in Headers */,
-				93198D477C09C86C1C110365 /* CZPhotoPreviewViewController.h in Headers */,
+				3DC451996BA87D307DFAC22A /* CZCropPreviewOverlayView.h in Headers */,
+				6F79E5B011E9F8E218DB970B /* CZCroppingScrollView.h in Headers */,
+				CF8171B074B412EAE61EEE0F /* CZPhotoPickerController.h in Headers */,
+				749D3D15B34DD1DE6CDE06DA /* CZPhotoPickerPermissionAlert.h in Headers */,
+				AED729FFD274A4C846DD891A /* CZPhotoPreviewViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1C6988A5E890CB3101B30C0F /* Pods-CZPhotoPickerController */ = {
+		3A034E71BA8225CECA68A62F /* CZPhotoPickerController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5231AEFECE31A030B8BEB41D /* Build configuration list for PBXNativeTarget "Pods-CZPhotoPickerController" */;
+			buildConfigurationList = 98BFCAF492F57ACA5FDF4233 /* Build configuration list for PBXNativeTarget "CZPhotoPickerController" */;
 			buildPhases = (
-				68C0B3EE71CF9476A6DDBFC5 /* Sources */,
-				48DBB43239CFC293139130DC /* Frameworks */,
-				C8E3A5B36F5DA07E41AE4BCA /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				56C69D9C9B651F8DD9C0DC5A /* PBXTargetDependency */,
-			);
-			name = "Pods-CZPhotoPickerController";
-			productName = "Pods-CZPhotoPickerController";
-			productReference = 003D1D14136C4759C63BA316 /* libPods-CZPhotoPickerController.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		3D10AB7CA9FCF6B6D5D27F68 /* Pods */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 397CAD74743CE8EAA40ECE46 /* Build configuration list for PBXNativeTarget "Pods" */;
-			buildPhases = (
-				545FCA82B420022132A27566 /* Sources */,
-				6A0938C3DFB3E02F358D5830 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8A223AF0BA802A324B9CBCE5 /* PBXTargetDependency */,
-			);
-			name = Pods;
-			productName = Pods;
-			productReference = D86096312A8A70580A9A9225 /* libPods.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		DCE46D2240B9987A1A9B5C03 /* CZPhotoPickerController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3243895564B8A43843B6F0B3 /* Build configuration list for PBXNativeTarget "CZPhotoPickerController" */;
-			buildPhases = (
-				1AE3EAFBC7204EDC808689BF /* Sources */,
-				F689E68AFDF1E3FECC3B7632 /* Frameworks */,
-				39574EBDBD0F16D2597B6AF7 /* Resources */,
+				FF9AAFAEB5B12991B4FC39FD /* Sources */,
+				D93FEA435F5562910A6A5790 /* Frameworks */,
+				22F8C94722D7D1760F6ABC48 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -274,100 +246,145 @@
 			);
 			name = CZPhotoPickerController;
 			productName = CZPhotoPickerController;
-			productReference = CF8F4BD3DBBBAEDBD15FFE80 /* CZPhotoPickerController.bundle */;
+			productReference = 22BEB7C02EBDFABC0D164F7D /* CZPhotoPickerController.bundle */;
 			productType = "com.apple.product-type.bundle";
+		};
+		C27C5750D525749717B12400 /* Pods-CZPhotoPickerController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 046B4FD1DD70029394BCCB37 /* Build configuration list for PBXNativeTarget "Pods-CZPhotoPickerController" */;
+			buildPhases = (
+				4C9650F2EDE43A7C1B5004C3 /* Sources */,
+				794C6BB1072224A10C04387F /* Frameworks */,
+				4FE0EA92A0F1059CAC21F5D2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A23B1DBD6EAC283BAB2C3925 /* PBXTargetDependency */,
+			);
+			name = "Pods-CZPhotoPickerController";
+			productName = "Pods-CZPhotoPickerController";
+			productReference = 893A07E3EA4A5CD2EB40906F /* libPods-CZPhotoPickerController.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D164D1479D9661E1E06100FC /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CB6D416BA98B73420D3746A /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				84329A489C29C7DCEE9D45D1 /* Sources */,
+				5534E5E2EA21B221B4D0656C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				649E5E1B6C057DC79137E040 /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = 38DA4219FF2A2CF9B2C7C24A /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A3845473046F1BC6C984072E /* Project object */ = {
+		9D0D960F943263B06E8EE7D4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
 			};
-			buildConfigurationList = 18CD049E0BD839F86A572877 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 68B428580F8EC9EC4F997B2C /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 4DB0CDC339838C7F5154B633;
-			productRefGroup = 29C2C2DED1E65027A512F778 /* Products */;
+			mainGroup = 43AAE48E992DB78C5BA002A9;
+			productRefGroup = E753F86FBDCC2CFAE52C85A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DCE46D2240B9987A1A9B5C03 /* CZPhotoPickerController */,
-				3D10AB7CA9FCF6B6D5D27F68 /* Pods */,
-				1C6988A5E890CB3101B30C0F /* Pods-CZPhotoPickerController */,
+				3A034E71BA8225CECA68A62F /* CZPhotoPickerController */,
+				D164D1479D9661E1E06100FC /* Pods */,
+				C27C5750D525749717B12400 /* Pods-CZPhotoPickerController */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		39574EBDBD0F16D2597B6AF7 /* Resources */ = {
+		22F8C94722D7D1760F6ABC48 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0329A794C8EAAAAB0A4494C2 /* CZPhotoPreviewViewController.xib in Resources */,
+				CB0A93FDEA645E030BF8A513 /* CZPhotoPreviewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1AE3EAFBC7204EDC808689BF /* Sources */ = {
+		4C9650F2EDE43A7C1B5004C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3E5C545E1E50E2AEE25D80F /* CZCropPreviewOverlayView.m in Sources */,
+				AD4BE5833E04F0A3259E218B /* CZCroppingScrollView.m in Sources */,
+				01FEE0B21B470C61A60446BB /* CZPhotoPickerController.m in Sources */,
+				CFBCDE0F864C32D363F29FDC /* CZPhotoPickerPermissionAlert.m in Sources */,
+				B1C30627C4A2DFBE4ABD87A3 /* CZPhotoPreviewViewController.m in Sources */,
+				733946212B6E463D249B163B /* Pods-CZPhotoPickerController-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		545FCA82B420022132A27566 /* Sources */ = {
+		84329A489C29C7DCEE9D45D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD3123BED723081146EFB1C0 /* Pods-dummy.m in Sources */,
+				A8A09761F5183616D541EFB7 /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		68C0B3EE71CF9476A6DDBFC5 /* Sources */ = {
+		FF9AAFAEB5B12991B4FC39FD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADB08DC904DB89400BBC529F /* CZCropPreviewOverlayView.m in Sources */,
-				602DA123043D650897395FFF /* CZCroppingScrollView.m in Sources */,
-				78E7D3735C017275C28D7AE2 /* CZPhotoPickerController.m in Sources */,
-				C6293CEB78F444454AF7F4BD /* CZPhotoPreviewViewController.m in Sources */,
-				085598764D38277EBF265105 /* Pods-CZPhotoPickerController-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		56C69D9C9B651F8DD9C0DC5A /* PBXTargetDependency */ = {
+		649E5E1B6C057DC79137E040 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DCE46D2240B9987A1A9B5C03 /* CZPhotoPickerController */;
-			targetProxy = C74C55BB93EDD2FAAC282FEB /* PBXContainerItemProxy */;
+			target = C27C5750D525749717B12400 /* Pods-CZPhotoPickerController */;
+			targetProxy = 9DF6F847C5F761875E84F6C9 /* PBXContainerItemProxy */;
 		};
-		8A223AF0BA802A324B9CBCE5 /* PBXTargetDependency */ = {
+		A23B1DBD6EAC283BAB2C3925 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1C6988A5E890CB3101B30C0F /* Pods-CZPhotoPickerController */;
-			targetProxy = 562A21E898FD3CDC99FF2BE0 /* PBXContainerItemProxy */;
+			target = 3A034E71BA8225CECA68A62F /* CZPhotoPickerController */;
+			targetProxy = 37C404FE71604E102898378C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		00520A536208FC82B8670B81 /* Release */ = {
+		25BE389B6EB6DDB496132C4E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 928BB10B9BC4C4588CE3444E /* Pods-CZPhotoPickerController-Private.xcconfig */;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		6237C03F09BC86DF3F5FCF37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B5078BA8995454BA391E7D1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-CZPhotoPickerController/Pods-CZPhotoPickerController-prefix.pch";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = (
@@ -387,40 +404,9 @@
 			};
 			name = Release;
 		};
-		0306C54AFE72A3D07F3A0414 /* Release */ = {
+		6BB4D117544D7D0D69AF37ED /* Debug */ = {
 			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		75277DA40E1669CC6C5F63F3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D91C2C1CA16107EFC08D23DF /* Pods.debug.xcconfig */;
+			baseConfigurationReference = EC7795648F8F1A46DF9FFEB1 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
@@ -443,33 +429,7 @@
 			};
 			name = Debug;
 		};
-		7F93B023D7AFF6DE0AB19C42 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 928BB10B9BC4C4588CE3444E /* Pods-CZPhotoPickerController-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-CZPhotoPickerController/Pods-CZPhotoPickerController-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		AC1C711670D95E4775FA7B72 /* Debug */ = {
+		84014C918C58F18DBE92A6EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -505,7 +465,64 @@
 			};
 			name = Debug;
 		};
-		E241BC6CB8B5B235B3A4922D /* Debug */ = {
+		86C9502CE5ED283ABDFE2D0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A0A95EE6932206DD78AB6D66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFE1284B482875F80D6FD14F /* Pods-CZPhotoPickerController-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-CZPhotoPickerController/Pods-CZPhotoPickerController-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F63456E7F8C09DD0E3B5407B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -515,24 +532,15 @@
 			};
 			name = Debug;
 		};
-		E45DC062EE1742D515EC5076 /* Release */ = {
+		F6663310CC38B9D32FF1C3C0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		E67916463FFCF3D11C3C9061 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1C70AA0B6055A025D20590F /* Pods.release.xcconfig */;
+			baseConfigurationReference = FFE1284B482875F80D6FD14F /* Pods-CZPhotoPickerController-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-CZPhotoPickerController/Pods-CZPhotoPickerController-prefix.pch";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = (
@@ -555,43 +563,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		18CD049E0BD839F86A572877 /* Build configuration list for PBXProject "Pods" */ = {
+		046B4FD1DD70029394BCCB37 /* Build configuration list for PBXNativeTarget "Pods-CZPhotoPickerController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AC1C711670D95E4775FA7B72 /* Debug */,
-				0306C54AFE72A3D07F3A0414 /* Release */,
+				A0A95EE6932206DD78AB6D66 /* Debug */,
+				F6663310CC38B9D32FF1C3C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3243895564B8A43843B6F0B3 /* Build configuration list for PBXNativeTarget "CZPhotoPickerController" */ = {
+		68B428580F8EC9EC4F997B2C /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E241BC6CB8B5B235B3A4922D /* Debug */,
-				E45DC062EE1742D515EC5076 /* Release */,
+				84014C918C58F18DBE92A6EF /* Debug */,
+				86C9502CE5ED283ABDFE2D0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		397CAD74743CE8EAA40ECE46 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		98BFCAF492F57ACA5FDF4233 /* Build configuration list for PBXNativeTarget "CZPhotoPickerController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				75277DA40E1669CC6C5F63F3 /* Debug */,
-				E67916463FFCF3D11C3C9061 /* Release */,
+				F63456E7F8C09DD0E3B5407B /* Debug */,
+				25BE389B6EB6DDB496132C4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5231AEFECE31A030B8BEB41D /* Build configuration list for PBXNativeTarget "Pods-CZPhotoPickerController" */ = {
+		9CB6D416BA98B73420D3746A /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7F93B023D7AFF6DE0AB19C42 /* Debug */,
-				00520A536208FC82B8670B81 /* Release */,
+				6BB4D117544D7D0D69AF37ED /* Debug */,
+				6237C03F09BC86DF3F5FCF37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A3845473046F1BC6C984072E /* Project object */;
+	rootObject = 9D0D960F943263B06E8EE7D4 /* Project object */;
 }
