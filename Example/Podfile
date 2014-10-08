@@ -1,9 +1,6 @@
-platform :ios, "6.0"
+source 'https://github.com/CocoaPods/Specs.git'
 
-pod 'CZPhotoPickerController', :path => "../"
+platform :ios, '6.0'
 
-target :CZPhotoPickerControllerTests do
-  pod 'SHFastEnumerationProtocols'
-  pod 'SHTestCaseAdditions'
-  pod 'KIF-next'
-end
+pod 'CZPhotoPickerController', :path => '../'
+

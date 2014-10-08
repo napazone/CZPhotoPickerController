@@ -22,14 +22,14 @@
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
+            buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "223BA7E217C54B9D0048B378"
-               BuildableName = "CZPhotoPickerControllerTests.octest"
+               BuildableName = "CZPhotoPickerControllerTests.xctest"
                BlueprintName = "CZPhotoPickerControllerTests"
                ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "223BA7E217C54B9D0048B378"
-               BuildableName = "CZPhotoPickerControllerTests.octest"
+               BuildableName = "CZPhotoPickerControllerTests.xctest"
                BlueprintName = "CZPhotoPickerControllerTests"
                ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>

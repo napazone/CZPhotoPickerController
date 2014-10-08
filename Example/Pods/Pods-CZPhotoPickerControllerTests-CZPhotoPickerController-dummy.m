@@ -1,5 +1,0 @@
-#import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_CZPhotoPickerControllerTests_CZPhotoPickerController : NSObject
-@end
-@implementation PodsDummy_Pods_CZPhotoPickerControllerTests_CZPhotoPickerController
-@end

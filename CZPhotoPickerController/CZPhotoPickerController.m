@@ -12,10 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+@import AVFoundation;
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "CZPhotoPickerController.h"
 #import "CZCropPreviewOverlayView.h"
+#import "CZPhotoPickerPermissionAlert.h"
 #import "CZPhotoPreviewViewController.h"
 
 
@@ -61,11 +63,14 @@ typedef enum {
   return YES;
 }
 
-+ (BOOL)isOS7
++ (BOOL)isOS7OrHigher
 {
-  NSString *version = [UIDevice currentDevice].systemVersion;
-  NSComparisonResult result = [@"7.0" compare : version options : NSNumericSearch];
-  return (result == NSOrderedSame || result == NSOrderedAscending);
+  return ([UIDevice currentDevice].systemVersion.floatValue >= 7.0);
+}
+
++ (BOOL)isOS8OrHigher
+{
+  return ([UIDevice currentDevice].systemVersion.floatValue >= 8.0);
 }
 
 #pragma mark - Lifecycle
@@ -276,6 +281,22 @@ typedef enum {
 
 - (void)showImagePickerWithSourceType:(UIImagePickerControllerSourceType)sourceType
 {
+  if (sourceType == UIImagePickerControllerSourceTypeCamera) {
+    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    switch (status) {
+      case AVAuthorizationStatusAuthorized:
+      case AVAuthorizationStatusNotDetermined:
+        // Show UIImagePickerController; it will ask for permission if the status
+        // is not determined.
+        break;
+
+      case AVAuthorizationStatusDenied:
+      case AVAuthorizationStatusRestricted:
+        [[CZPhotoPickerPermissionAlert sharedInstance] showAlert];
+        break;
+    }
+  }
+
   self.sourceType = sourceType;
 
   UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
@@ -290,7 +311,7 @@ typedef enum {
     BOOL isPhone = (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone);
     BOOL isTallPhone = (isPhone && CGRectGetHeight(UIScreen.mainScreen.bounds) > 480);
 
-    if ([CZPhotoPickerController isOS7]) {
+    if ([CZPhotoPickerController isOS7OrHigher]) {
       if (isTallPhone) {
         overlayFrame = UIEdgeInsetsInsetRect(overlayFrame, UIEdgeInsetsMake(68, 0, 72, 0));
       }
