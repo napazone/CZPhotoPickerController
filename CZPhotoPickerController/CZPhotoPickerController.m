@@ -163,11 +163,22 @@ typedef enum {
 
 - (void)dismissAnimated:(BOOL)animated
 {
+  [self dismissAnimated:animated completionBlock:nil];
+}
+
+- (void)dismissAnimated:(BOOL)animated completionBlock:(void (^)())completionBlock
+{
   if (self.popoverController) {
     [self.popoverController dismissPopoverAnimated:animated];
+    if (completionBlock) {
+      completionBlock();
+    }
   }
   else if (self.showFromViewController.presentedViewController) {
-    [self.showFromViewController dismissViewControllerAnimated:animated completion:nil];
+    [self.showFromViewController dismissViewControllerAnimated:animated completion:completionBlock];
+  }
+  else if (completionBlock) {
+    completionBlock();
   }
 }
 
