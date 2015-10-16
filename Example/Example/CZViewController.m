@@ -17,7 +17,7 @@
 #import "CZViewController.h"
 
 @interface CZViewController ()
-@property (weak, nonatomic) IBOutlet UISwitch *cropPreviewSwitch;
+@property(nonatomic,weak) IBOutlet UISwitch *cropPreviewSwitch;
 @property(nonatomic,weak) IBOutlet UIImageView *imageView;
 @property(nonatomic,strong) CZPhotoPickerController *pickPhotoController;
 @end

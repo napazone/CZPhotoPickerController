@@ -22,8 +22,7 @@
 		5C58893B16CB3BFA00861AA5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C58893A16CB3BFA00861AA5 /* Default@2x.png */; };
 		5C58893D16CB3BFA00861AA5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C58893C16CB3BFA00861AA5 /* Default-568h@2x.png */; };
 		5C58894016CB3BFA00861AA5 /* CZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C58893F16CB3BFA00861AA5 /* CZViewController.m */; };
-		5C58894316CB3BFA00861AA5 /* CZViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C58894116CB3BFA00861AA5 /* CZViewController_iPhone.xib */; };
-		5C58894616CB3BFA00861AA5 /* CZViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C58894416CB3BFA00861AA5 /* CZViewController_iPad.xib */; };
+		5C58894616CB3BFA00861AA5 /* CZViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C58894416CB3BFA00861AA5 /* CZViewController.xib */; };
 		5C58895616CB3D6800861AA5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58895516CB3D6800861AA5 /* AssetsLibrary.framework */; };
 		5C58895816CB3D9000861AA5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58895716CB3D9000861AA5 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
@@ -60,8 +59,7 @@
 		5C58893C16CB3BFA00861AA5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5C58893E16CB3BFA00861AA5 /* CZViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CZViewController.h; sourceTree = "<group>"; };
 		5C58893F16CB3BFA00861AA5 /* CZViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CZViewController.m; sourceTree = "<group>"; };
-		5C58894216CB3BFA00861AA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CZViewController_iPhone.xib; sourceTree = "<group>"; };
-		5C58894516CB3BFA00861AA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CZViewController_iPad.xib; sourceTree = "<group>"; };
+		5C58894516CB3BFA00861AA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CZViewController.xib; sourceTree = "<group>"; };
 		5C58895516CB3D6800861AA5 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5C58895716CB3D9000861AA5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B91761405DA8050C1C37BB0A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,8 +151,7 @@
 				5C58893616CB3BFA00861AA5 /* CZAppDelegate.m */,
 				5C58893E16CB3BFA00861AA5 /* CZViewController.h */,
 				5C58893F16CB3BFA00861AA5 /* CZViewController.m */,
-				5C58894116CB3BFA00861AA5 /* CZViewController_iPhone.xib */,
-				5C58894416CB3BFA00861AA5 /* CZViewController_iPad.xib */,
+				5C58894416CB3BFA00861AA5 /* CZViewController.xib */,
 				5C58892D16CB3BF900861AA5 /* Supporting Files */,
 			);
 			path = Example;
@@ -270,8 +267,7 @@
 				5C58893916CB3BFA00861AA5 /* Default.png in Resources */,
 				5C58893B16CB3BFA00861AA5 /* Default@2x.png in Resources */,
 				5C58893D16CB3BFA00861AA5 /* Default-568h@2x.png in Resources */,
-				5C58894316CB3BFA00861AA5 /* CZViewController_iPhone.xib in Resources */,
-				5C58894616CB3BFA00861AA5 /* CZViewController_iPad.xib in Resources */,
+				5C58894616CB3BFA00861AA5 /* CZViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,20 +352,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		5C58894116CB3BFA00861AA5 /* CZViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5C58894216CB3BFA00861AA5 /* en */,
-			);
-			name = CZViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		5C58894416CB3BFA00861AA5 /* CZViewController_iPad.xib */ = {
+		5C58894416CB3BFA00861AA5 /* CZViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5C58894516CB3BFA00861AA5 /* en */,
 			);
-			name = CZViewController_iPad.xib;
+			name = CZViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -427,7 +415,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -452,7 +440,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
@@ -469,6 +457,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.carezone.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -482,6 +471,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.carezone.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

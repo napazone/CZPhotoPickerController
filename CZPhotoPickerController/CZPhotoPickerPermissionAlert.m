@@ -44,7 +44,6 @@
   NSString *cancel = NSLocalizedString(@"OK", nil);
 
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancel otherButtonTitles:NSLocalizedString(@"Open Settings", nil), nil];
-
   [alert show];
 }
 
