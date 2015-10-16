@@ -15,46 +15,25 @@
 #import "CZPhotoPickerPermissionAlert.h"
 #import "CZPhotoPickerController.h"
 
-@interface CZPhotoPickerPermissionAlert ()
-<UIAlertViewDelegate>
-@end
-
 @implementation CZPhotoPickerPermissionAlert
 
 #pragma mark - Class methods
 
-+ (CZPhotoPickerPermissionAlert *)sharedInstance
-{
-  static CZPhotoPickerPermissionAlert *_sharedInstance = nil;
-  static dispatch_once_t onceToken;
-
-  dispatch_once(&onceToken, ^{
-    _sharedInstance = [[CZPhotoPickerPermissionAlert alloc] init];
-  });
-
-  return _sharedInstance;
-}
-
-#pragma mark - Methods
-
-- (void)showAlert
++ (UIAlertController *)alertController
 {
   NSString *title = NSLocalizedString(@"Can’t access camera", nil);
-  NSString *message = NSLocalizedString(@"To enable camera access, open\nSettings > Privacy and allow access.", nil);
-  NSString *cancel = NSLocalizedString(@"OK", nil);
+  NSString *message = NSLocalizedString(@"To enable camera access, open Settings and allow access.", nil);
 
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancel otherButtonTitles:NSLocalizedString(@"Open Settings", nil), nil];
-  [alert show];
-}
+  UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
 
-#pragma mark - UIAlertViewDelegate
+  [controller addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:nil]];
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-  if (buttonIndex != alertView.cancelButtonIndex) {
+  [controller addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Open Settings", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
     NSURL *URL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
     [[UIApplication sharedApplication] openURL:URL];
-  }
+  }]];
+
+  return controller;
 }
 
 @end

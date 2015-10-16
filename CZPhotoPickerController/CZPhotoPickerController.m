@@ -281,9 +281,11 @@ typedef enum {
         break;
 
       case AVAuthorizationStatusDenied:
-      case AVAuthorizationStatusRestricted:
-        [[CZPhotoPickerPermissionAlert sharedInstance] showAlert];
+      case AVAuthorizationStatusRestricted: {
+        UIViewController *controller = [CZPhotoPickerPermissionAlert alertController];
+        [self.showFromViewController presentViewController:controller animated:YES completion:nil];
         break;
+      }
     }
   }
 

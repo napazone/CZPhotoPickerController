@@ -16,8 +16,6 @@
 
 @interface CZPhotoPickerPermissionAlert : NSObject
 
-+ (CZPhotoPickerPermissionAlert *)sharedInstance;
-
-- (void)showAlert;
++ (UIAlertController *)alertController;
 
 @end
