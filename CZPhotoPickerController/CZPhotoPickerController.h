@@ -20,7 +20,7 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
 @interface CZPhotoPickerController : NSObject
 
 /**
- Defaults to NO. Is passed to the UIImagePickerController
+ Defaults to NO. This value is passed to UIImagePickerController.
  */
 @property(nonatomic,assign) BOOL allowsEditing;
 
@@ -53,9 +53,6 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
 - (id)initWithPresentingViewController:(UIViewController *)aViewController withCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
 
 - (void)dismissAnimated:(BOOL)animated;
-
-- (void)showFromTabBar:(UITabBar *)tabBar;
-- (void)showFromBarButtonItem:(UIBarButtonItem *)barButtonItem;
-- (void)showFromRect:(CGRect)rect;
+- (void)show;
 
 @end

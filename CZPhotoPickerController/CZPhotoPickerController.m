@@ -20,24 +20,19 @@
 #import "CZPhotoPickerPermissionAlert.h"
 #import "CZPhotoPreviewViewController.h"
 
-
-typedef enum {
+typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   PhotoPickerButtonUseLastPhoto,
   PhotoPickerButtonTakePhoto,
   PhotoPickerButtonChooseFromLibrary,
-} PhotoPickerButtonKind;
-
+};
 
 @interface CZPhotoPickerController ()
-<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate>
+<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate>
 
 @property(nonatomic,strong) ALAssetsLibrary *assetsLibrary;
 @property(nonatomic,copy) CZPhotoPickerCompletionBlock completionBlock;
 @property(nonatomic,strong) UIImage *lastPhoto;
 @property(nonatomic,strong) UIPopoverController *popoverController;
-@property(nonatomic,weak) UIBarButtonItem *showFromBarButtonItem;
-@property(nonatomic,assign) CGRect showFromRect;
-@property(nonatomic,weak) UITabBar *showFromTabBar;
 @property(nonatomic,weak) UIViewController *showFromViewController;
 @property(nonatomic,assign) UIImagePickerControllerSourceType sourceType;
 
@@ -55,7 +50,6 @@ typedef enum {
   }
 
   NSArray *availableMediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
-
   if ([availableMediaTypes containsObject:(NSString *)kUTTypeImage] == NO) {
     return NO;
   }
@@ -70,7 +64,7 @@ typedef enum {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
-- (id)initWithPresentingViewController:(UIViewController *)aViewController withCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
+- (id)initWithPresentingViewController:(UIViewController *)viewController withCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
 {
   self = [super init];
 
@@ -78,7 +72,7 @@ typedef enum {
     self.completionBlock = completionBlock;
     self.offerLastTaken = YES;
     self.saveToCameraRoll = YES;
-    self.showFromViewController = aViewController;
+    self.showFromViewController = viewController;
     [self observeApplicationDidEnterBackgroundNotification];
   }
 
@@ -106,9 +100,9 @@ typedef enum {
   return _assetsLibrary;
 }
 
-- (NSString *)buttonTitleForButtonIndex:(NSUInteger)buttonIndex
+- (NSString *)buttonTitleForButtonKind:(PhotoPickerButtonKind)kind
 {
-  switch (buttonIndex) {
+  switch (kind) {
     case PhotoPickerButtonUseLastPhoto:
       return NSLocalizedString(@"Use Last Photo Taken", nil);
 
@@ -216,57 +210,47 @@ typedef enum {
 {
   if ([[self class] canTakePhoto] == NO) {
     [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    return;
+  }
+
+  void (^showBlock)(UIImage *) = ^(UIImage *lastPhoto) {
+
+    self.lastPhoto = lastPhoto;
+
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+
+    if (lastPhoto) {
+      NSString *title = [self buttonTitleForButtonKind:PhotoPickerButtonUseLastPhoto];
+      [controller addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.completionBlock(nil, @{ UIImagePickerControllerOriginalImage : lastPhoto, UIImagePickerControllerEditedImage : lastPhoto });
+      }]];
+    }
+
+    NSString *takeTitle = [self buttonTitleForButtonKind:PhotoPickerButtonTakePhoto];
+    [controller addAction:[UIAlertAction actionWithTitle:takeTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+      [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypeCamera];
+    }]];
+
+    NSString *chooseTitle = [self buttonTitleForButtonKind:PhotoPickerButtonChooseFromLibrary];
+    [controller addAction:[UIAlertAction actionWithTitle:chooseTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+      [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    }]];
+
+    NSString *cancelTitle = NSLocalizedString(@"Cancel", nil);
+    [controller addAction:[UIAlertAction actionWithTitle:cancelTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+      self.completionBlock(nil, nil);
+    }]];
+
+    [self.showFromViewController presentViewController:controller animated:YES completion:nil];
+
+  };
+
+  if (self.offerLastTaken) {
+    [self getLastPhotoTakenWithCompletionBlock:showBlock];
   }
   else {
-    void (^showActionSheetBlock)(UIImage *) = ^(UIImage *lastPhoto) {
-
-      self.lastPhoto = lastPhoto;
-
-      UIActionSheet *sheet;
-
-      if (lastPhoto) {
-        sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:[self buttonTitleForButtonIndex:PhotoPickerButtonUseLastPhoto], [self buttonTitleForButtonIndex:PhotoPickerButtonTakePhoto], [self buttonTitleForButtonIndex:PhotoPickerButtonChooseFromLibrary], nil];
-      }
-      else {
-        sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:[self buttonTitleForButtonIndex:PhotoPickerButtonTakePhoto], [self buttonTitleForButtonIndex:PhotoPickerButtonChooseFromLibrary], nil];
-      }
-
-      if (self.showFromBarButtonItem) {
-        [sheet showFromBarButtonItem:self.showFromBarButtonItem animated:YES];
-      }
-      else if (self.showFromTabBar) {
-        [sheet showFromTabBar:self.showFromTabBar];
-      }
-      else {
-        [sheet showFromRect:self.showFromRect inView:self.showFromViewController.view animated:YES];
-      }
-    };
-
-    if (self.offerLastTaken) {
-      [self getLastPhotoTakenWithCompletionBlock:showActionSheetBlock];
-    }
-    else {
-      showActionSheetBlock(nil);
-    }
+    showBlock(nil);
   }
-}
-
-- (void)showFromBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-  self.showFromBarButtonItem = barButtonItem;
-  [self show];
-}
-
-- (void)showFromTabBar:(UITabBar *)tabBar
-{
-  self.showFromTabBar = tabBar;
-  [self show];
-}
-
-- (void)showFromRect:(CGRect)rect
-{
-  self.showFromRect = rect;
-  [self show];
 }
 
 - (void)showImagePickerWithSourceType:(UIImagePickerControllerSourceType)sourceType
@@ -319,51 +303,13 @@ typedef enum {
     // Presenting popover from popover does not work unless performed with a delay.
     //
     dispatch_async(dispatch_get_main_queue(), ^{
-      if (self.showFromBarButtonItem) {
-        [self.popoverController presentPopoverFromBarButtonItem:self.showFromBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-      }
-      else {
-        [self.popoverController presentPopoverFromRect:self.showFromRect inView:self.showFromViewController.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-      }
+      [self.popoverController presentPopoverFromRect:CGRectZero inView:self.showFromViewController.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     });
   }
   else {
     dispatch_async(dispatch_get_main_queue(), ^{ // ditto. see comment above
       [self.showFromViewController presentViewController:mediaUI animated:YES completion:nil];
     });
-  }
-}
-
-#pragma mark - UIActionSheetDelegate
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-  actionSheet.delegate = nil;
-
-  if (buttonIndex == actionSheet.cancelButtonIndex) {
-    self.completionBlock(nil, nil);
-    return;
-  }
-
-  if (self.lastPhoto == nil) {
-    buttonIndex++;
-  }
-
-  switch (buttonIndex) {
-    case 0:
-      self.completionBlock(nil, @{ UIImagePickerControllerOriginalImage : self.lastPhoto, UIImagePickerControllerEditedImage : self.lastPhoto });
-      break;
-
-    case 1:
-      [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypeCamera];
-      return;
-
-    case 2:
-      [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-      break;
-
-    default:
-      break;
   }
 }
 

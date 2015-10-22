@@ -63,7 +63,7 @@
     self.pickPhotoController.cropOverlaySize = CGSizeZero;
   }
 
-  [self.pickPhotoController showFromBarButtonItem:sender];
+  [self.pickPhotoController show];
 }
 
 - (IBAction)toggleCropPreviewSwitch:(id)sender
