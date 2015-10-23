@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.license          = "Apache 2.0"
   s.authors          = { "Brian Cooke" => "brian@carezone.com", "Peyman Oreizy" => "peyman@carezone.com" }
   s.source           = { :git => "https://github.com/carezone/CZPhotoPickerController.git", :tag => "1.2.4" }
-  s.platform         = :ios, '5.0'
+  s.platform         = :ios, '8.0'
   s.frameworks       = 'AssetsLibrary', 'MobileCoreServices'
   s.source_files     = 'CZPhotoPickerController'
   s.resource_bundle  = { 'CZPhotoPickerController' => ['CZPhotoPickerController/CZPhotoPreviewViewController.xib'] }
