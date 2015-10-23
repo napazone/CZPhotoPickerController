@@ -231,7 +231,7 @@
 			attributes = {
 				CLASSPREFIX = CZ;
 				LastTestingUpgradeCheck = 0600;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Care Zone, Inc.";
 			};
 			buildConfigurationList = 5C58891E16CB3BF900861AA5 /* Build configuration list for PBXProject "Example" */;
@@ -386,6 +386,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CZPhotoPickerControllerTests/CZPhotoPickerControllerTests-Prefix.pch";
 				INFOPLIST_FILE = "CZPhotoPickerControllerTests/CZPhotoPickerControllerTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.seivanheidari.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -404,6 +405,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CZPhotoPickerControllerTests/CZPhotoPickerControllerTests-Prefix.pch";
 				INFOPLIST_FILE = "CZPhotoPickerControllerTests/CZPhotoPickerControllerTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.seivanheidari.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -423,6 +425,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -477,6 +480,7 @@
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.carezone.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -490,6 +494,7 @@
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.carezone.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
