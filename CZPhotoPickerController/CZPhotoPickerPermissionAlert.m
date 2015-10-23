@@ -43,13 +43,7 @@
   NSString *message = NSLocalizedString(@"To enable camera access, open\nSettings > Privacy and allow access.", nil);
   NSString *cancel = NSLocalizedString(@"OK", nil);
 
-  UIAlertView *alert;
-  if ([CZPhotoPickerController isOS8OrHigher]) {
-    alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancel otherButtonTitles:NSLocalizedString(@"Open Settings", nil), nil];
-  }
-  else {
-    alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancel otherButtonTitles:nil];
-  }
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancel otherButtonTitles:NSLocalizedString(@"Open Settings", nil), nil];
 
   [alert show];
 }

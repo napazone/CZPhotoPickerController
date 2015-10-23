@@ -63,16 +63,6 @@ typedef enum {
   return YES;
 }
 
-+ (BOOL)isOS7OrHigher
-{
-  return ([UIDevice currentDevice].systemVersion.floatValue >= 7.0);
-}
-
-+ (BOOL)isOS8OrHigher
-{
-  return ([UIDevice currentDevice].systemVersion.floatValue >= 8.0);
-}
-
 #pragma mark - Lifecycle
 
 - (void)dealloc
@@ -311,18 +301,8 @@ typedef enum {
     BOOL isPhone = (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone);
     BOOL isTallPhone = (isPhone && CGRectGetHeight(UIScreen.mainScreen.bounds) > 480);
 
-    if ([CZPhotoPickerController isOS7OrHigher]) {
-      if (isTallPhone) {
-        overlayFrame = UIEdgeInsetsInsetRect(overlayFrame, UIEdgeInsetsMake(68, 0, 72, 0));
-      }
-    }
-    else if (isPhone) {
-      if (isTallPhone) {
-        overlayFrame.size.height -= 96;
-      }
-      else {
-        overlayFrame.size.height -= 54;
-      }
+    if (isTallPhone) {
+      overlayFrame = UIEdgeInsetsInsetRect(overlayFrame, UIEdgeInsetsMake(68, 0, 72, 0));
     }
 
     CZCropPreviewOverlayView *overlayView = [[CZCropPreviewOverlayView alloc] initWithFrame:overlayFrame cropOverlaySize:self.cropOverlaySize];
