@@ -193,7 +193,6 @@
 				223BA7DE17C54B9D0048B378 /* Sources */,
 				223BA7DF17C54B9D0048B378 /* Frameworks */,
 				223BA7E017C54B9D0048B378 /* Resources */,
-				223BA7E117C54B9D0048B378 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -279,19 +278,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		223BA7E117C54B9D0048B378 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 		4D08E192E084A1BFA87ECBEB /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,12 +379,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CZPhotoPickerControllerTests/CZPhotoPickerControllerTests-Prefix.pch";
 				INFOPLIST_FILE = "CZPhotoPickerControllerTests/CZPhotoPickerControllerTests-Info.plist";
@@ -412,12 +392,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CZPhotoPickerControllerTests/CZPhotoPickerControllerTests-Prefix.pch";
 				INFOPLIST_FILE = "CZPhotoPickerControllerTests/CZPhotoPickerControllerTests-Info.plist";
