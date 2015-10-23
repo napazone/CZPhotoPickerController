@@ -1,6 +1,6 @@
 {
   "name": "CZPhotoPickerController",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "summary": "A photo picker offering 'use last photo taken', 'take photo', and 'choose from library'.",
   "homepage": "https://github.com/carezone/CZPhotoPickerController",
   "license": "Apache 2.0",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/carezone/CZPhotoPickerController.git",
-    "tag": "1.2.4"
+    "tag": "1.2.5"
   },
   "platforms": {
     "ios": "8.0"
