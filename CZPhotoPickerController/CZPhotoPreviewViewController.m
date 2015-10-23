@@ -124,13 +124,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  CGSize preferredSize = CGSizeMake(320, 480);
-  if ([CZPhotoPickerController isOS7OrHigher]) {
-    self.preferredContentSize = preferredSize;
-  }
-  else {
-    self.contentSizeForViewInPopover = preferredSize;
-  }
+  self.preferredContentSize = CGSizeMake(320, 480);
 
   [self.croppingScrollView setImage:self.image withCropSize:self.cropOverlaySize];
 
