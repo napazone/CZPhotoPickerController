@@ -30,7 +30,7 @@
 {
   __weak typeof(self) weakSelf = self;
 
-  self.photoPickerController = [[CZPhotoPickerController alloc] initWithPresentingViewController:self withCompletionBlock:^(UIImagePickerController *imagePickerController, NSDictionary *imageInfoDict) {
+  self.photoPickerController = [[CZPhotoPickerController alloc] initWithCompletionBlock:^(UIImagePickerController *imagePickerController, NSDictionary *imageInfoDict) {
 
     UIImage *image = imageInfoDict[UIImagePickerControllerEditedImage];
     if (!image) {
@@ -55,7 +55,7 @@
     self.photoPickerController.cropOverlaySize = CGSizeZero;
   }
 
-  [self.photoPickerController show];
+  [self.photoPickerController presentFromViewController:self];
 }
 
 - (IBAction)toggleCropPreviewSwitch:(id)sender

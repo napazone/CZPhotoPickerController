@@ -32,7 +32,6 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 @property(nonatomic,strong) ALAssetsLibrary *assetsLibrary;
 @property(nonatomic,copy) CZPhotoPickerCompletionBlock completionBlock;
 @property(nonatomic,strong) UIImage *lastPhoto;
-@property(nonatomic,weak) UIViewController *showFromViewController;
 @property(nonatomic,assign) UIImagePickerControllerSourceType sourceType;
 
 @end
@@ -58,7 +57,7 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 
 #pragma mark - Lifecycle
 
-- (id)initWithPresentingViewController:(UIViewController *)viewController withCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
+- (id)initWithCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
 {
   self = [super init];
 
@@ -66,7 +65,6 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
     _completionBlock = [completionBlock copy];
     _offerLastTaken = YES;
     _saveToCameraRoll = YES;
-    _showFromViewController = viewController;
   }
 
   return self;
@@ -169,10 +167,10 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
-- (void)show
+- (void)presentFromViewController:(UIViewController *)fromViewController
 {
   if ([[self class] canTakePhoto] == NO) {
-    [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary fromViewController:fromViewController];
     return;
   }
 
@@ -191,12 +189,12 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 
     NSString *takeTitle = [self buttonTitleForButtonKind:PhotoPickerButtonTakePhoto];
     [controller addAction:[UIAlertAction actionWithTitle:takeTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-      [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypeCamera];
+      [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypeCamera fromViewController:fromViewController];
     }]];
 
     NSString *chooseTitle = [self buttonTitleForButtonKind:PhotoPickerButtonChooseFromLibrary];
     [controller addAction:[UIAlertAction actionWithTitle:chooseTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-      [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+      [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary fromViewController:fromViewController];
     }]];
 
     NSString *cancelTitle = NSLocalizedString(@"Cancel", nil);
@@ -204,7 +202,7 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
       self.completionBlock(nil, nil);
     }]];
 
-    [self.showFromViewController presentViewController:controller animated:YES completion:nil];
+    [fromViewController presentViewController:controller animated:YES completion:nil];
 
   };
 
@@ -216,7 +214,7 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   }
 }
 
-- (void)showImagePickerWithSourceType:(UIImagePickerControllerSourceType)sourceType
+- (void)showImagePickerWithSourceType:(UIImagePickerControllerSourceType)sourceType fromViewController:(UIViewController *)fromViewController
 {
   if (sourceType == UIImagePickerControllerSourceTypeCamera) {
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
@@ -230,7 +228,7 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
       case AVAuthorizationStatusDenied:
       case AVAuthorizationStatusRestricted: {
         UIViewController *controller = [CZPhotoPickerPermissionAlert alertController];
-        [self.showFromViewController presentViewController:controller animated:YES completion:nil];
+        [fromViewController presentViewController:controller animated:YES completion:nil];
         break;
       }
     }
@@ -268,10 +266,10 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
       imagePickerController.popoverPresentationController.sourceView = self.sourceView;
       imagePickerController.popoverPresentationController.sourceRect = self.sourceRect;
     }
-    [self.showFromViewController presentViewController:imagePickerController animated:YES completion:nil];
+    [fromViewController presentViewController:imagePickerController animated:YES completion:nil];
   }
   else {
-    [self.showFromViewController presentViewController:imagePickerController animated:YES completion:nil];
+    [fromViewController presentViewController:imagePickerController animated:YES completion:nil];
   }
 }
 
