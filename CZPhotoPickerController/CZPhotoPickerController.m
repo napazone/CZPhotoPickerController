@@ -27,12 +27,11 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 };
 
 @interface CZPhotoPickerController ()
-<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate>
+<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property(nonatomic,strong) ALAssetsLibrary *assetsLibrary;
 @property(nonatomic,copy) CZPhotoPickerCompletionBlock completionBlock;
 @property(nonatomic,strong) UIImage *lastPhoto;
-@property(nonatomic,strong) UIPopoverController *popoverController;
 @property(nonatomic,weak) UIViewController *showFromViewController;
 @property(nonatomic,assign) UIImagePickerControllerSourceType sourceType;
 
@@ -59,37 +58,21 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 
 #pragma mark - Lifecycle
 
-- (void)dealloc
-{
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
-}
-
 - (id)initWithPresentingViewController:(UIViewController *)viewController withCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
 {
   self = [super init];
 
   if (self) {
-    self.completionBlock = completionBlock;
-    self.offerLastTaken = YES;
-    self.saveToCameraRoll = YES;
-    self.showFromViewController = viewController;
-    [self observeApplicationDidEnterBackgroundNotification];
+    _completionBlock = [completionBlock copy];
+    _offerLastTaken = YES;
+    _saveToCameraRoll = YES;
+    _showFromViewController = viewController;
   }
 
   return self;
 }
 
 #pragma mark - Methods
-
-- (void)applicationDidEnterBackground:(NSNotification *)notification
-{
-  [self.popoverController dismissPopoverAnimated:YES];
-  self.popoverController = nil;
-
-  if (self.completionBlock) {
-    self.completionBlock(nil, nil);
-  }
-}
 
 - (ALAssetsLibrary *)assetsLibrary
 {
@@ -145,16 +128,6 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   return newImage;
 }
 
-- (void)dismissAnimated:(BOOL)animated
-{
-  if (self.popoverController) {
-    [self.popoverController dismissPopoverAnimated:animated];
-  }
-  else if (self.showFromViewController.presentedViewController) {
-    [self.showFromViewController dismissViewControllerAnimated:animated completion:nil];
-  }
-}
-
 - (void)getLastPhotoTakenWithCompletionBlock:(void (^)(UIImage *))completionBlock
 {
   [self.assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
@@ -189,16 +162,6 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   } failureBlock:^(NSError *error) {
     completionBlock(nil);
   }];
-}
-
-- (UIPopoverController *)makePopoverController:(UIImagePickerController *)mediaUI
-{
-  if (self.popoverControllerClass) {
-    return [[self.popoverControllerClass alloc] initWithContentViewController:mediaUI];
-  }
-  else {
-    return [[UIPopoverController alloc] initWithContentViewController:mediaUI];
-  }
 }
 
 - (void)observeApplicationDidEnterBackgroundNotification
@@ -275,14 +238,15 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 
   self.sourceType = sourceType;
 
-  UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
-  mediaUI.allowsEditing = self.allowsEditing;
-  mediaUI.delegate = self;
-  mediaUI.mediaTypes = @[ (NSString *)kUTTypeImage ];
-  mediaUI.sourceType = sourceType;
+  UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+  imagePickerController.allowsEditing = self.allowsEditing;
+  imagePickerController.delegate = self;
+  imagePickerController.mediaTypes = @[ (NSString *)kUTTypeImage ];
+  imagePickerController.sourceType = sourceType;
 
   if (sourceType == UIImagePickerControllerSourceTypeCamera && CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO) {
-    CGRect overlayFrame = mediaUI.view.frame;
+
+    CGRect overlayFrame = imagePickerController.view.frame;
 
     BOOL isPhone = (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone);
     BOOL isTallPhone = (isPhone && CGRectGetHeight(UIScreen.mainScreen.bounds) > 480);
@@ -292,30 +256,28 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
     }
 
     CZCropPreviewOverlayView *overlayView = [[CZCropPreviewOverlayView alloc] initWithFrame:overlayFrame cropOverlaySize:self.cropOverlaySize];
-    mediaUI.cameraOverlayView = overlayView;
+    imagePickerController.cameraOverlayView = overlayView;
   }
 
   if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) && (sourceType == UIImagePickerControllerSourceTypePhotoLibrary)) {
-    self.popoverController = [self makePopoverController:mediaUI];
-    self.popoverController.delegate = self;
-
-    // Bug Workaround (as of iOS 8.0.2) :
-    // Presenting popover from popover does not work unless performed with a delay.
-    //
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [self.popoverController presentPopoverFromRect:CGRectZero inView:self.showFromViewController.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    });
+    imagePickerController.modalPresentationStyle = UIModalPresentationPopover;
+    if (self.barButtonItem) {
+      imagePickerController.popoverPresentationController.barButtonItem = self.barButtonItem;
+    }
+    else {
+      imagePickerController.popoverPresentationController.sourceView = self.sourceView;
+      imagePickerController.popoverPresentationController.sourceRect = self.sourceRect;
+    }
+    [self.showFromViewController presentViewController:imagePickerController animated:YES completion:nil];
   }
   else {
-    dispatch_async(dispatch_get_main_queue(), ^{ // ditto. see comment above
-      [self.showFromViewController presentViewController:mediaUI animated:YES completion:nil];
-    });
+    [self.showFromViewController presentViewController:imagePickerController animated:YES completion:nil];
   }
 }
 
 #pragma mark - UIImagePickerControllerDelegate
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+- (void)imagePickerController:(UIImagePickerController *)pickerViewController didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
   UIImage *image = info[(self.allowsEditing ? UIImagePickerControllerEditedImage : UIImagePickerControllerOriginalImage)];
 
@@ -327,17 +289,17 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 
   if (self.allowsEditing == NO && self.sourceType != UIImagePickerControllerSourceTypeCamera) {
     CZPhotoPreviewViewController *vc = [[CZPhotoPreviewViewController alloc] initWithImage:image cropOverlaySize:self.cropOverlaySize chooseBlock:^(UIImage *chosenImage) {
-      [self.popoverController dismissPopoverAnimated:YES];
+      [pickerViewController dismissViewControllerAnimated:YES completion:nil];
 
       NSMutableDictionary *mutableImageInfo = [info mutableCopy];
       mutableImageInfo[UIImagePickerControllerEditedImage] = chosenImage;
 
-      self.completionBlock(picker, [mutableImageInfo copy]);
+      self.completionBlock(pickerViewController, [mutableImageInfo copy]);
     } cancelBlock:^{
-      [picker popViewControllerAnimated:YES];
+      [pickerViewController popViewControllerAnimated:YES];
     }];
 
-    [picker pushViewController:vc animated:YES];
+    [pickerViewController pushViewController:vc animated:YES];
   }
   else {
     NSMutableDictionary *mutableImageInfo = [info mutableCopy];
@@ -346,22 +308,14 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
       mutableImageInfo[UIImagePickerControllerEditedImage] = [self cropImage:image];
     }
 
-    [self.popoverController dismissPopoverAnimated:YES];
+    [pickerViewController dismissViewControllerAnimated:YES completion:nil];
 
-    self.completionBlock(picker, mutableImageInfo);
+    self.completionBlock(pickerViewController, mutableImageInfo);
   }
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-  self.completionBlock(nil, nil);
-}
-
-#pragma mark - UIPopoverControllerDelegate
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-  self.popoverController = nil;
   self.completionBlock(nil, nil);
 }
 

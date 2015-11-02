@@ -25,6 +25,11 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
 @property(nonatomic,assign) BOOL allowsEditing;
 
 /**
+ The bar button item on which to anchor the popover. Either this or sourceView must be set on iPad.
+*/
+@property(nonatomic,strong) UIBarButtonItem *barButtonItem;
+
+/**
  Defaults to CGSizeZero. When set to a non-zero value, a crop
  overlay view will be displayed atop the selected image at the
  provided size.
@@ -48,11 +53,20 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
 @property(nonatomic,assign) BOOL saveToCameraRoll;
 
 /**
+ The rectangle in the specified view in which to anchor the popover.
+ */
+@property(nonatomic,assign) CGRect sourceRect;
+
+/**
+ The view containing the anchor rectangle for the popover. Either this or `barButtonItem` must be set.
+*/
+@property(nonatomic,strong) UIView *sourceView;
+
+/**
  @param completionBlock Called when a photo has been picked or cancelled (`imageInfoDict` will be nil if canceled). The `UIImagePickerController` has not been dismissed at the time of this being called.
  */
 - (id)initWithPresentingViewController:(UIViewController *)aViewController withCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
 
-- (void)dismissAnimated:(BOOL)animated;
 - (void)show;
 
 @end

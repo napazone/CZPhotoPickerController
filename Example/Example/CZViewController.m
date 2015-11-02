@@ -19,18 +19,18 @@
 @interface CZViewController ()
 @property(nonatomic,weak) IBOutlet UISwitch *cropPreviewSwitch;
 @property(nonatomic,weak) IBOutlet UIImageView *imageView;
-@property(nonatomic,strong) CZPhotoPickerController *pickPhotoController;
+@property(nonatomic,strong) CZPhotoPickerController *photoPickerController;
 @end
 
 @implementation CZViewController
 
 #pragma mark - Methods
 
-- (CZPhotoPickerController *)photoController
+- (IBAction)takePicture:(id)sender
 {
   __weak typeof(self) weakSelf = self;
 
-  return [[CZPhotoPickerController alloc] initWithPresentingViewController:self withCompletionBlock:^(UIImagePickerController *imagePickerController, NSDictionary *imageInfoDict) {
+  self.photoPickerController = [[CZPhotoPickerController alloc] initWithPresentingViewController:self withCompletionBlock:^(UIImagePickerController *imagePickerController, NSDictionary *imageInfoDict) {
 
     UIImage *image = imageInfoDict[UIImagePickerControllerEditedImage];
     if (!image) {
@@ -39,31 +39,23 @@
 
     weakSelf.imageView.image = image;
 
-    [weakSelf.pickPhotoController dismissAnimated:YES];
-    weakSelf.pickPhotoController = nil;
+    [weakSelf dismissViewControllerAnimated:YES completion:nil];
 
   }];
-}
 
-- (IBAction)takePicture:(id)sender
-{
-  if (self.pickPhotoController) {
-    return;
-  }
-
-  self.pickPhotoController = [self photoController];
-  self.pickPhotoController.saveToCameraRoll = NO;
+  self.photoPickerController.barButtonItem = sender;
+  self.photoPickerController.saveToCameraRoll = NO;
 
   if (self.cropPreviewSwitch.on) {
-    self.pickPhotoController.allowsEditing = NO;
-    self.pickPhotoController.cropOverlaySize = CGSizeMake(320, 100);
+    self.photoPickerController.allowsEditing = NO;
+    self.photoPickerController.cropOverlaySize = CGSizeMake(320, 100);
   }
   else {
-    self.pickPhotoController.allowsEditing = YES;
-    self.pickPhotoController.cropOverlaySize = CGSizeZero;
+    self.photoPickerController.allowsEditing = YES;
+    self.photoPickerController.cropOverlaySize = CGSizeZero;
   }
 
-  [self.pickPhotoController show];
+  [self.photoPickerController show];
 }
 
 - (IBAction)toggleCropPreviewSwitch:(id)sender
