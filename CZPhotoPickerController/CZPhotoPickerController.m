@@ -221,6 +221,10 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
     self.lastPhoto = lastPhoto;
 
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    controller.modalPresentationStyle = UIModalPresentationPopover;
+    controller.popoverPresentationController.barButtonItem = self.barButtonItem;
+    controller.popoverPresentationController.sourceRect = self.sourceRect;
+    controller.popoverPresentationController.sourceView = self.sourceView;
 
     if (lastPhoto) {
       NSString *title = [self buttonTitleForButtonKind:PhotoPickerButtonUseLastPhoto];
@@ -284,8 +288,13 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   imagePickerController.mediaTypes = @[ (NSString *)kUTTypeImage ];
   imagePickerController.sourceType = sourceType;
 
-  if (sourceType == UIImagePickerControllerSourceTypeCamera && CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO) {
-
+  if (sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {
+    imagePickerController.modalPresentationStyle = UIModalPresentationPopover;
+    imagePickerController.popoverPresentationController.barButtonItem = self.barButtonItem;
+    imagePickerController.popoverPresentationController.sourceView = self.sourceView;
+    imagePickerController.popoverPresentationController.sourceRect = self.sourceRect;
+  }
+  else if (sourceType == UIImagePickerControllerSourceTypeCamera && CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO) {
     CGRect overlayFrame = imagePickerController.view.frame;
     overlayFrame = UIEdgeInsetsInsetRect(overlayFrame, self.cameraOverlayInsets);
     CZCropPreviewOverlayView *overlayView = [[CZCropPreviewOverlayView alloc] initWithFrame:overlayFrame cropOverlaySize:self.cropOverlaySize];
@@ -299,23 +308,9 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
     //
     CGPoint cameraViewOffset = self.cameraViewOffset;
     imagePickerController.cameraViewTransform = CGAffineTransformTranslate(imagePickerController.cameraViewTransform, cameraViewOffset.x, cameraViewOffset.y);
-
   }
 
-  if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) && (sourceType == UIImagePickerControllerSourceTypePhotoLibrary)) {
-    imagePickerController.modalPresentationStyle = UIModalPresentationPopover;
-    if (self.barButtonItem) {
-      imagePickerController.popoverPresentationController.barButtonItem = self.barButtonItem;
-    }
-    else {
-      imagePickerController.popoverPresentationController.sourceView = self.sourceView;
-      imagePickerController.popoverPresentationController.sourceRect = self.sourceRect;
-    }
-    [fromViewController presentViewController:imagePickerController animated:YES completion:nil];
-  }
-  else {
-    [fromViewController presentViewController:imagePickerController animated:YES completion:nil];
-  }
+  [fromViewController presentViewController:imagePickerController animated:YES completion:nil];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
