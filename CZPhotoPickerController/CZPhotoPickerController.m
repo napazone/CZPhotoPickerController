@@ -98,6 +98,35 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   }
 }
 
+- (UIEdgeInsets)cameraOverlayInsets
+{
+  UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
+
+  BOOL isPhone = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
+  BOOL isTallPhone = (isPhone && CGRectGetHeight(UIScreen.mainScreen.bounds) > 480);
+  if (isTallPhone) {
+    // Tested on:
+    //   iPodTouch 5 on iOS 9
+    //   iPhone 6 on iOS 9
+    //   iPhone 6+ on iOS 8.4.1
+    edgeInsets = UIEdgeInsetsMake(0, 0, 72, 0);
+  }
+
+  return edgeInsets;
+}
+
+- (CGPoint)cameraViewOffset
+{
+  CGPoint point = CGPointZero;
+
+  BOOL isPhone = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
+  if (isPhone) {
+    point = CGPointMake(0, 31.5);
+  }
+
+  return point;
+}
+
 - (UIImage *)cropImage:(UIImage *)image
 {
   CGFloat resizeScale = (image.size.width / self.cropOverlaySize.width);
@@ -117,7 +146,20 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   CGFloat originX = ((cropSize.width - width) / 2.0f);
   CGFloat originY = ((cropSize.height - height) / 2.0f);
 
-  CGRect rect = CGRectMake(originX, originY, size.width * scale, size.height * scale);
+  // Offset the cropped image so it corresponds with the camera view offset.
+  //
+  // The camera view offset is in "screen points". We need an offset in
+  // "camera pixels", so we compute a ratio using the widths of the
+  // image versus the screen. In practice, this is close, but not
+  // exact—the cropped image is a little higher than the overlay. I don't
+  // know why that is.
+  //
+  CGPoint offset = self.cameraViewOffset;
+  CGFloat imageToScreenRatio = image.size.width / [UIScreen mainScreen].bounds.size.width;
+  offset = CGPointMake(offset.x * imageToScreenRatio, offset.y * imageToScreenRatio);
+
+  CGRect rect = CGRectMake(originX, originY, width, height);
+  rect = CGRectOffset(rect, offset.x, offset.y);
   [image drawInRect:rect];
 
   UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -245,16 +287,19 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   if (sourceType == UIImagePickerControllerSourceTypeCamera && CGSizeEqualToSize(self.cropOverlaySize, CGSizeZero) == NO) {
 
     CGRect overlayFrame = imagePickerController.view.frame;
-
-    BOOL isPhone = (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone);
-    BOOL isTallPhone = (isPhone && CGRectGetHeight(UIScreen.mainScreen.bounds) > 480);
-
-    if (isTallPhone) {
-      overlayFrame = UIEdgeInsetsInsetRect(overlayFrame, UIEdgeInsetsMake(68, 0, 72, 0));
-    }
-
+    overlayFrame = UIEdgeInsetsInsetRect(overlayFrame, self.cameraOverlayInsets);
     CZCropPreviewOverlayView *overlayView = [[CZCropPreviewOverlayView alloc] initWithFrame:overlayFrame cropOverlaySize:self.cropOverlaySize];
     imagePickerController.cameraOverlayView = overlayView;
+
+    // On an iPhone/iPodTouch: After taking a photo, the built-in photo review screen (with the
+    // "Retake" and "Use" bar buttons) shifts the photo down a bit, but it doesn't offset our
+    // overlay view at all, so the review screen doesn't match the user's crop position. To
+    // workaround this issue, we offset our overlay view to try and match the built-in review
+    // screen's offset.
+    //
+    CGPoint cameraViewOffset = self.cameraViewOffset;
+    imagePickerController.cameraViewTransform = CGAffineTransformTranslate(imagePickerController.cameraViewTransform, cameraViewOffset.x, cameraViewOffset.y);
+
   }
 
   if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) && (sourceType == UIImagePickerControllerSourceTypePhotoLibrary)) {
