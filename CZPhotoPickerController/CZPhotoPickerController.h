@@ -37,12 +37,6 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
 @property(nonatomic,assign) CGSize cropOverlaySize;
 
 /**
- Allow overriding of the UIPopoverController class used to host the
- UIImagePickerController. Defaults to UIPopoverController.
- */
-@property(nonatomic,copy) Class popoverControllerClass;
-
-/**
  Defaults to YES.
 */
 @property(nonatomic,assign) BOOL offerLastTaken;
