@@ -19,6 +19,8 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
 
 @interface CZPhotoPickerController : NSObject
 
++ (UIAlertController *)makePermissionAlertController;
+
 /**
  Defaults to NO. This value is passed to UIImagePickerController.
  */

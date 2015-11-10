@@ -17,7 +17,6 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "CZPhotoPickerController.h"
 #import "CZCropPreviewOverlayView.h"
-#import "CZPhotoPickerPermissionAlert.h"
 #import "CZPhotoPreviewViewController.h"
 
 typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
@@ -53,6 +52,23 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   }
 
   return YES;
+}
+
++ (UIAlertController *)makePermissionAlertController
+{
+  NSString *title = NSLocalizedString(@"Can’t access camera", nil);
+  NSString *message = NSLocalizedString(@"To enable camera access, open Settings and allow access.", nil);
+
+  UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+
+  [controller addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:nil]];
+
+  [controller addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Open Settings", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    NSURL *URL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    [[UIApplication sharedApplication] openURL:URL];
+  }]];
+
+  return controller;
 }
 
 #pragma mark - Lifecycle
@@ -273,7 +289,7 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 
       case AVAuthorizationStatusDenied:
       case AVAuthorizationStatusRestricted: {
-        UIViewController *controller = [CZPhotoPickerPermissionAlert alertController];
+        UIViewController *controller = [[self class] makePermissionAlertController];
         [fromViewController presentViewController:controller animated:YES completion:nil];
         break;
       }
