@@ -34,16 +34,16 @@
 
 #pragma mark - Lifecycle
 
-- (id)initWithImage:(UIImage *)anImage cropOverlaySize:(CGSize)cropOverlaySize chooseBlock:(void (^)(UIImage *image))chooseBlock cancelBlock:(dispatch_block_t)cancelBlock
+- (instancetype)initWithImage:(UIImage *)anImage cropOverlaySize:(CGSize)cropOverlaySize chooseBlock:(void (^)(UIImage *image))chooseBlock cancelBlock:(dispatch_block_t)cancelBlock
 {
   NSParameterAssert(chooseBlock);
   NSParameterAssert(cancelBlock);
 
-  NSString *mainBundlePath = [[NSBundle mainBundle] resourcePath];
-  NSString *frameworkBundlePath = [mainBundlePath stringByAppendingPathComponent:@"CZPhotoPickerController.bundle"];
-  NSBundle *bundle = [NSBundle bundleWithPath:frameworkBundlePath];
+  NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+  NSString *frameworkBundlePath = [bundle pathForResource:@"CZPhotoPickerController" ofType:@"bundle"];
+  NSBundle *frameworkBundle = [NSBundle bundleWithPath:frameworkBundlePath];
 
-  self = [super initWithNibName:nil bundle:bundle];
+  self = [super initWithNibName:nil bundle:frameworkBundle];
 
   if (self) {
     _cropOverlaySize = cropOverlaySize;
@@ -82,12 +82,6 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-
-#if __IPHONE_7_0
-  self.cancelButton.tintColor = [UIColor whiteColor];
-  self.chooseButton.tintColor = [UIColor whiteColor];
-  self.previewLabel.hidden = YES;
-#endif
 
   // No toolbar on iPad, use the nav bar. Mimic how Mail.app’s picker works
 
