@@ -61,7 +61,7 @@ Our uncrustify config is in ./config along with a shell script that will uncrust
 Credits
 -------
 
-CZPhotoPickerController was created by [Brian Cooke](https://github.com/bricooke) and [Peyman Oreizy](https://github.com/peymano) in the development of [CareZone Mobile for iOS](https://itunes.apple.com/us/app/carezone-mobile/id552197945).
+CZPhotoPickerController was created by [Brian Cooke](https://github.com/bricooke) and [Peyman Oreizy](https://github.com/peymano) in the development of [CareZone Mobile for iOS](https://itunes.apple.com/app/id829841726).
 
 Contact
 -------
