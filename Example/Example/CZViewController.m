@@ -64,13 +64,4 @@
   [self.cropPreviewSwitch setOn:!self.cropPreviewSwitch.on animated:YES];
 }
 
-#pragma mark - UIViewController
-
-- (void)viewDidLoad
-{
-  [super viewDidLoad];
-
-  self.imageView.clipsToBounds = YES;
-}
-
 @end

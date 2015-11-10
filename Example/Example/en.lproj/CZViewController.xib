@@ -41,7 +41,7 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
-                <imageView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="10">
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="10">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                     <animations/>
                     <gestureRecognizers/>
