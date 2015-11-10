@@ -34,7 +34,7 @@
 
 #pragma mark - Lifecycle
 
-- (id)initWithImage:(UIImage *)anImage cropOverlaySize:(CGSize)cropOverlaySize chooseBlock:(void (^)(UIImage *image))chooseBlock cancelBlock:(dispatch_block_t)cancelBlock
+- (instancetype)initWithImage:(UIImage *)anImage cropOverlaySize:(CGSize)cropOverlaySize chooseBlock:(void (^)(UIImage *image))chooseBlock cancelBlock:(dispatch_block_t)cancelBlock
 {
   NSParameterAssert(chooseBlock);
   NSParameterAssert(cancelBlock);

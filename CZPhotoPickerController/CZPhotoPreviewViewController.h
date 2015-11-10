@@ -29,6 +29,6 @@ typedef void (^CZPhotoPreviewChooseBlock)(UIImage *chosenImage);
  @param chooseBlock Block to be called if choose/use button is tapped.
  @param cancelBlock Block to be called if they cancel.
  */
-- (id)initWithImage:(UIImage *)anImage cropOverlaySize:(CGSize)cropOverlaySize chooseBlock:(void(^) (UIImage * image)) chooseBlock cancelBlock:(dispatch_block_t)cancelBlock;
+- (instancetype)initWithImage:(UIImage *)anImage cropOverlaySize:(CGSize)cropOverlaySize chooseBlock:(void(^) (UIImage * image)) chooseBlock cancelBlock:(dispatch_block_t)cancelBlock;
 
 @end

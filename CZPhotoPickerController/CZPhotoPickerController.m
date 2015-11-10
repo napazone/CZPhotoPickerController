@@ -57,7 +57,7 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 
 #pragma mark - Lifecycle
 
-- (id)initWithCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
+- (instancetype)initWithCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
 {
   self = [super init];
 

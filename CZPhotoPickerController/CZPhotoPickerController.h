@@ -60,7 +60,7 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
  @param completionBlock Called when a photo has been picked or cancelled (`imageInfoDict` will be `nil` if canceled).
  If `UIImagePickerController` is set, it is your responsibility to dismiss it.
  */
-- (id)initWithCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
+- (instancetype)initWithCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
 
 /**
  @param controller The view controller to present the action sheet and UIImagePickerController from.

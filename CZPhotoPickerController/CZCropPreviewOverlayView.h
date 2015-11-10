@@ -16,6 +16,6 @@
 
 @interface CZCropPreviewOverlayView : UIView
 
-- (id)initWithFrame:(CGRect)frame cropOverlaySize:(CGSize)cropOverlaySize;
+- (instancetype)initWithFrame:(CGRect)frame cropOverlaySize:(CGSize)cropOverlaySize;
 
 @end

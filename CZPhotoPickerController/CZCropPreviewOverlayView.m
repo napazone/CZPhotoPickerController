@@ -28,7 +28,7 @@
 
 #pragma mark - Lifecycle
 
-- (id)initWithFrame:(CGRect)frame cropOverlaySize:(CGSize)cropOverlaySize
+- (instancetype)initWithFrame:(CGRect)frame cropOverlaySize:(CGSize)cropOverlaySize
 {
   self = [super initWithFrame:frame];
 
