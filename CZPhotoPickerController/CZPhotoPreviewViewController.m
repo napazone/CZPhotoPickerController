@@ -39,11 +39,11 @@
   NSParameterAssert(chooseBlock);
   NSParameterAssert(cancelBlock);
 
-  NSString *mainBundlePath = [[NSBundle mainBundle] resourcePath];
-  NSString *frameworkBundlePath = [mainBundlePath stringByAppendingPathComponent:@"CZPhotoPickerController.bundle"];
-  NSBundle *bundle = [NSBundle bundleWithPath:frameworkBundlePath];
+  NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+  NSString *frameworkBundlePath = [bundle pathForResource:@"CZPhotoPickerController" ofType:@"bundle"];
+  NSBundle *frameworkBundle = [NSBundle bundleWithPath:frameworkBundlePath];
 
-  self = [super initWithNibName:nil bundle:bundle];
+  self = [super initWithNibName:nil bundle:frameworkBundle];
 
   if (self) {
     _cropOverlaySize = cropOverlaySize;
