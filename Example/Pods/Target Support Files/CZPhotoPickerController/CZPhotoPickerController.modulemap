@@ -1,0 +1,6 @@
+framework module CZPhotoPickerController {
+  umbrella header "CZPhotoPickerController-umbrella.h"
+
+  export *
+  module * { export * }
+}
