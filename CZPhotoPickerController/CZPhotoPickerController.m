@@ -327,7 +327,6 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 
   if (self.allowsEditing == NO && self.sourceType != UIImagePickerControllerSourceTypeCamera) {
     CZPhotoPreviewViewController *vc = [[CZPhotoPreviewViewController alloc] initWithImage:image cropOverlaySize:self.cropOverlaySize chooseBlock:^(UIImage *chosenImage) {
-      [pickerViewController dismissViewControllerAnimated:YES completion:nil];
 
       NSMutableDictionary *mutableImageInfo = [info mutableCopy];
       mutableImageInfo[UIImagePickerControllerEditedImage] = chosenImage;
@@ -346,15 +345,13 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
       mutableImageInfo[UIImagePickerControllerEditedImage] = [self cropImage:image];
     }
 
-    [pickerViewController dismissViewControllerAnimated:YES completion:nil];
-
     self.completionBlock(pickerViewController, mutableImageInfo);
   }
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)pickerViewController
 {
-  self.completionBlock(nil, nil);
+  self.completionBlock(pickerViewController, nil);
 }
 
 @end

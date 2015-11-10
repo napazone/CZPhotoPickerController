@@ -39,8 +39,9 @@
 
     weakSelf.imageView.image = image;
 
-    [weakSelf dismissViewControllerAnimated:YES completion:nil];
-
+    if (weakSelf.presentedViewController) {
+      [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    }
   }];
 
   self.photoPickerController.barButtonItem = sender;

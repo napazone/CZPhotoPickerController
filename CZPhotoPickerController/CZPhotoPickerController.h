@@ -57,7 +57,8 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
 @property(nonatomic,strong) UIView *sourceView;
 
 /**
- @param completionBlock Called when a photo has been picked or cancelled (`imageInfoDict` will be nil if canceled). The `UIImagePickerController` has not been dismissed at the time of this being called.
+ @param completionBlock Called when a photo has been picked or cancelled (`imageInfoDict` will be `nil` if canceled).
+ If `UIImagePickerController` is set, it is your responsibility to dismiss it.
  */
 - (id)initWithCompletionBlock:(CZPhotoPickerCompletionBlock)completionBlock;
 
