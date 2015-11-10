@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+@import CZPhotoPickerController;
 #import <QuartzCore/QuartzCore.h>
-#import "CZPhotoPickerController.h"
 #import "CZViewController.h"
 
 @interface CZViewController ()
