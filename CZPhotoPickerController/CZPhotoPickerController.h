@@ -59,6 +59,12 @@ typedef void (^CZPhotoPickerCompletionBlock)(UIImagePickerController *imagePicke
 @property(nonatomic,strong) UIView *sourceView;
 
 /**
+ The block will be called right before the UIAlertController is presented. Use it if you need \
+ to add some custom options to the alert.
+ */
+@property(nonatomic,copy) void (^willPresentAlertController)(UIAlertController *);
+
+/**
  @param completionBlock Called when a photo has been picked or cancelled (`imageInfoDict` will be `nil` if canceled).
  If `UIImagePickerController` is set, it is your responsibility to dismiss it.
  */

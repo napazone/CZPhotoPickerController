@@ -264,6 +264,10 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
       self.completionBlock(nil, nil);
     }]];
 
+    if (self.willPresentAlertController) {
+      self.willPresentAlertController(controller);
+    }
+
     [fromViewController presentViewController:controller animated:YES completion:nil];
 
   };
