@@ -21,25 +21,25 @@ pod 'CZPhotoPickerController'
 
     __weak typeof(self) weakSelf = self;
 
-    self.photoPicker = [[CZPhotoPickerController alloc] initWithPresentingViewController:self withCompletionBlock:^(UIImagePickerController *imagePickerController, NSDictionary *imageInfoDict) {
+    self.photoPicker = [[CZPhotoPickerController alloc] initWithCompletionBlock:^(UIImagePickerController *imagePickerController, NSDictionary *imageInfoDict) {
 
-      if (imagePickerController.allowsEditing) {
-        weakSelf.imageView.image = imageInfoDict[UIImagePickerControllerEditedImage];
-      }
-      else {
-        weakSelf.imageView.image = imageInfoDict[UIImagePickerControllerOriginalImage];
+      UIImage *image = imageInfoDict[UIImagePickerControllerEditedImage];
+      if (!image) {
+        image = imageInfoDict[UIImagePickerControllerOriginalImage];
       }
 
-      [weakSelf.photoPicker dismissAnimated:YES];
-      weakSelf.photoPicker = nil;
+      weakSelf.imageView.image = image;
 
+      if (weakSelf.presentedViewController) {
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+      }
     }];
 
     self.photoPicker.allowsEditing = YES; // optional
 
     self.photoPicker.cropOverlaySize = CGSizeMake(320, 160); // optional
 
-    [self.photoPicker showFromBarButtonItem:btn];
+    [self.photoPicker presentFromViewController:self];
 
 If `allowsEditing` is `YES`, the user will be asked to resize the chosen image. Otherwise, a preview is shown.
 
