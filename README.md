@@ -17,7 +17,7 @@ Installation
 pod 'CZPhotoPickerController'
 ```
 
-##Usage:
+## Usage:
 
     __weak typeof(self) weakSelf = self;
 
