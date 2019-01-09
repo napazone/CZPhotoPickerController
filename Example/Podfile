@@ -1,8 +1,8 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
 platform :ios, '8.1'
 
-use_frameworks!
+target 'Example' do
+  use_frameworks!
 
-pod 'CZPhotoPickerController', :path => '../'
+  pod 'CZPhotoPickerController', path: '../'
+end
 
