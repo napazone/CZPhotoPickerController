@@ -11,6 +11,7 @@
 		223BA7E717C54B9D0048B378 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58892816CB3BF900861AA5 /* Foundation.framework */; };
 		223BA7ED17C54B9D0048B378 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 223BA7EB17C54B9D0048B378 /* InfoPlist.strings */; };
 		223BA7F017C54B9D0048B378 /* CZIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 223BA7EF17C54B9D0048B378 /* CZIntegrationTests.m */; };
+		50C6B13921E5AD0A0000435A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C6B13821E5AD0A0000435A /* LaunchScreen.storyboard */; };
 		5C58892716CB3BF900861AA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58892616CB3BF900861AA5 /* UIKit.framework */; };
 		5C58892916CB3BF900861AA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58892816CB3BF900861AA5 /* Foundation.framework */; };
 		5C58892B16CB3BF900861AA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C58892A16CB3BF900861AA5 /* CoreGraphics.framework */; };
@@ -47,6 +48,7 @@
 		2D2ED24A2C2C2EFE485CE7EE /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4F764ED18362D31174C7B1 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		5050070521E5A58F0092F954 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CZViewController.xib; sourceTree = "<group>"; };
+		50C6B13821E5AD0A0000435A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C58892316CB3BF900861AA5 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C58892616CB3BF900861AA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5C58892816CB3BF900861AA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -154,6 +156,7 @@
 				5C58893E16CB3BFA00861AA5 /* CZViewController.h */,
 				5C58893F16CB3BFA00861AA5 /* CZViewController.m */,
 				5C58894416CB3BFA00861AA5 /* CZViewController.xib */,
+				50C6B13821E5AD0A0000435A /* LaunchScreen.storyboard */,
 				5C58892D16CB3BF900861AA5 /* Supporting Files */,
 			);
 			path = Example;
@@ -269,6 +272,7 @@
 				5C58893116CB3BF900861AA5 /* InfoPlist.strings in Resources */,
 				5C58893916CB3BFA00861AA5 /* Default.png in Resources */,
 				5C58893B16CB3BFA00861AA5 /* Default@2x.png in Resources */,
+				50C6B13921E5AD0A0000435A /* LaunchScreen.storyboard in Resources */,
 				5C58893D16CB3BFA00861AA5 /* Default-568h@2x.png in Resources */,
 				5C58894616CB3BFA00861AA5 /* CZViewController.xib in Resources */,
 			);
