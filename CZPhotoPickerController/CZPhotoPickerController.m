@@ -47,6 +47,7 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   }
 
   NSArray *availableMediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+
   if ([availableMediaTypes containsObject:(NSString *)kUTTypeImage] == NO) {
     return NO;
   }
@@ -63,7 +64,7 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 
   [controller addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:nil]];
 
-  [controller addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Open Settings", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+  [controller addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Open Settings", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
     NSURL *URL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
     [[UIApplication sharedApplication] openURL:URL];
   }]];
@@ -120,6 +121,7 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 
   BOOL isPhone = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
   BOOL isTallPhone = (isPhone && CGRectGetHeight(UIScreen.mainScreen.bounds) > 480);
+
   if (isTallPhone) {
     // Tested on:
     //   iPodTouch 5 on iOS 9
@@ -136,6 +138,7 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   CGPoint point = CGPointZero;
 
   BOOL isPhone = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone);
+
   if (isPhone) {
     point = CGPointMake(0, 31.5);
   }
@@ -200,17 +203,17 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
     else {
       [group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:^(ALAsset *result, NSUInteger index, BOOL *innerStop) {
 
-          // `index` will be `NSNotFound` on last call
+        // `index` will be `NSNotFound` on last call
 
-          if (index == NSNotFound || result == nil) {
-            return;
-          }
+        if (index == NSNotFound || result == nil) {
+          return;
+        }
 
-          ALAssetRepresentation *representation = [result defaultRepresentation];
-          completionBlock([UIImage imageWithCGImage:[representation fullScreenImage]]);
+        ALAssetRepresentation *representation = [result defaultRepresentation];
+        completionBlock([UIImage imageWithCGImage:[representation fullScreenImage]]);
 
-          *innerStop = YES;
-        }];
+        *innerStop = YES;
+      }];
     }
 
     *stop = YES;
@@ -244,23 +247,23 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
 
     if (lastPhoto) {
       NSString *title = [self buttonTitleForButtonKind:PhotoPickerButtonUseLastPhoto];
-      [controller addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+      [controller addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
         self.completionBlock(nil, @{ UIImagePickerControllerOriginalImage : lastPhoto, UIImagePickerControllerEditedImage : lastPhoto });
       }]];
     }
 
     NSString *takeTitle = [self buttonTitleForButtonKind:PhotoPickerButtonTakePhoto];
-    [controller addAction:[UIAlertAction actionWithTitle:takeTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [controller addAction:[UIAlertAction actionWithTitle:takeTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
       [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypeCamera fromViewController:fromViewController];
     }]];
 
     NSString *chooseTitle = [self buttonTitleForButtonKind:PhotoPickerButtonChooseFromLibrary];
-    [controller addAction:[UIAlertAction actionWithTitle:chooseTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [controller addAction:[UIAlertAction actionWithTitle:chooseTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
       [self showImagePickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary fromViewController:fromViewController];
     }]];
 
     NSString *cancelTitle = NSLocalizedString(@"Cancel", nil);
-    [controller addAction:[UIAlertAction actionWithTitle:cancelTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    [controller addAction:[UIAlertAction actionWithTitle:cancelTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *_Nonnull action) {
       self.completionBlock(nil, nil);
     }]];
 
