@@ -65,8 +65,8 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
   [controller addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:nil]];
 
   [controller addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Open Settings", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
-    NSURL *URL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-    [[UIApplication sharedApplication] openURL:URL];
+    NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
   }]];
 
   return controller;
