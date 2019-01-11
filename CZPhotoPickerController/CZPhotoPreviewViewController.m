@@ -108,8 +108,6 @@
     self.previewLabel.shadowColor = [UIColor blackColor];
     self.previewLabel.shadowOffset = CGSizeMake(0, -1);
     self.previewLabel.text = NSLocalizedString(@"Move and Scale", nil);
-    [self.previewLabel sizeToFit];
-    self.previewLabel.center = self.toolbar.center;
 
     self.title = self.previewLabel.text;
   }
