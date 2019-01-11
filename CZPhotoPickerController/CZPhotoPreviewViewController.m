@@ -83,6 +83,8 @@
 {
   [super viewDidLoad];
 
+  self.preferredContentSize = CGSizeMake(320, 480);
+
   // No toolbar on iPad, use the nav bar. Mimic how Mail.app’s picker works
 
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -118,11 +120,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  self.preferredContentSize = CGSizeMake(320, 480);
-
-  [self.croppingScrollView setImage:self.image withCropSize:self.cropOverlaySize];
-
   [super viewWillAppear:animated];
+
+  [self.view layoutIfNeeded];
+  [self.croppingScrollView setImage:self.image withCropSize:self.cropOverlaySize];
 }
 
 @end
