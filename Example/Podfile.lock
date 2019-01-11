@@ -1,5 +1,5 @@
 PODS:
-  - CZPhotoPickerController (2.0.1)
+  - CZPhotoPickerController (2.0.2)
 
 DEPENDENCIES:
   - CZPhotoPickerController (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CZPhotoPickerController: 2918dc11078aec254a42a58a5330b0bd12c00c74
+  CZPhotoPickerController: 6a3764d46c8fa839b1a1d3b679b1a65d16bd8c08
 
 PODFILE CHECKSUM: 7d092e7783907f9a1b5580aeaf6f6e08a207900b
 
