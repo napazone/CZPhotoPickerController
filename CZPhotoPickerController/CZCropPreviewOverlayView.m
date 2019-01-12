@@ -42,9 +42,24 @@
     [self addSubview:self.topMaskView];
     [self addSubview:self.bottomMaskView];
 
-    UIColor *backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.6];
+    UIColor *backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.7];
     self.topMaskView.backgroundColor = backgroundColor;
     self.bottomMaskView.backgroundColor = backgroundColor;
+
+    CAGradientLayer *topGradient = [CAGradientLayer layer];
+    topGradient.colors = @[ (id)[UIColor colorWithWhite:1 alpha:0].CGColor,
+                            (id)[UIColor colorWithWhite:1 alpha:1].CGColor ];
+    topGradient.startPoint = CGPointMake(0.5, 0);
+    topGradient.endPoint = CGPointMake(0.5, 1);
+    topGradient.frame = self.bottomMaskView.bounds;
+
+    CAGradientLayer *bottomGradient = [CAGradientLayer layer];
+    bottomGradient.colors = topGradient.colors;
+    bottomGradient.startPoint = topGradient.endPoint;
+    bottomGradient.endPoint = topGradient.startPoint;
+
+    self.topMaskView.layer.mask = topGradient;
+    self.bottomMaskView.layer.mask = bottomGradient;
 
     self.highlightView = [[UIView alloc] initWithFrame:CGRectZero];
     self.highlightView.backgroundColor = [UIColor clearColor];
@@ -77,6 +92,9 @@
   self.topMaskView.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), yOrigin);
   self.bottomMaskView.frame = CGRectMake(0, yOrigin + scaledCropOverlay.height, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) - (yOrigin + scaledCropOverlay.height));
   self.highlightView.frame = CGRectMake(0, CGRectGetMaxY(self.topMaskView.frame), CGRectGetWidth(self.frame), CGRectGetMinY(self.bottomMaskView.frame) - CGRectGetMaxY(self.topMaskView.frame));
+
+  self.topMaskView.layer.mask.frame = self.topMaskView.layer.bounds;
+  self.bottomMaskView.layer.mask.frame = self.bottomMaskView.layer.bounds;
 }
 
 @end
