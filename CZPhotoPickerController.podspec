@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "CZPhotoPickerController"
-  s.version          = "2.0.2"
+  s.version          = "2.0.3"
   s.summary          = "A photo picker offering 'use last photo taken', 'take photo', and 'choose from library'."
   s.homepage         = "https://github.com/carezone/CZPhotoPickerController"
   s.license          = "Apache 2.0"
