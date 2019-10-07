@@ -346,7 +346,7 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
   }
 
-  // if they chose the photo, and didn't edit, push in a preview
+  // if they chose the photo, and didn't edit, present a preview
 
   if (self.allowsEditing == NO && self.sourceType != UIImagePickerControllerSourceTypeCamera) {
     CZPhotoPreviewViewController *vc = [[CZPhotoPreviewViewController alloc] initWithImage:image cropOverlaySize:self.cropOverlaySize chooseBlock:^(UIImage *chosenImage) {
@@ -354,12 +354,18 @@ typedef NS_ENUM (NSUInteger, PhotoPickerButtonKind) {
       NSMutableDictionary *mutableImageInfo = [info mutableCopy];
       mutableImageInfo[UIImagePickerControllerEditedImage] = chosenImage;
 
-      self.completionBlock(pickerViewController, [mutableImageInfo copy]);
+      [pickerViewController dismissViewControllerAnimated:YES completion:^{
+        self.completionBlock(pickerViewController, [mutableImageInfo copy]);
+      }];
+
     } cancelBlock:^{
-      [pickerViewController popViewControllerAnimated:YES];
+      [pickerViewController dismissViewControllerAnimated:YES completion:nil];
     }];
 
-    [pickerViewController pushViewController:vc animated:YES];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
+    navController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+
+    [pickerViewController presentViewController:navController animated:YES completion:nil];
   }
   else {
     NSMutableDictionary *mutableImageInfo = [info mutableCopy];
